@@ -1,0 +1,23 @@
+{
+  "name": "dotdictionary",
+  "version": "1.0.0",
+  "description": "The only dictionary you will ever need",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Khaled Mohamed <Khal3d.Mohamed@gmail.com>",
+  "contributors": [
+    "Karim El-Sayed <Karim.Abdelghaffar98@gmail.com",
+    "Rawan Ashraf <Rawan_Ashraf_98@hotmail.com>",
+    "Mariam Kamel <MariamKamel98@hotmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.9"
+  },
+  "devDependencies": {
+    "electron-reload": "^1.2.2"
+  }
+}

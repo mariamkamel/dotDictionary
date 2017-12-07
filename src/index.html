@@ -1,14 +1,15 @@
 <head>
-    <link href="./main.css" rel="stylesheet">
+    <link href="./styles/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
+    
     <!-- HEADER HTML -->
     <header class="headerbar" style="display: none">
         <div class="logo">
-            <img src="logo.png" width="160" height="20">
+            <img src="assets/logo.png" width="160" height="20">
         </div>
         <div class="InputWithIcon">
             <input type="text" placeholder="Search For a Meaning.." size="55">
@@ -23,6 +24,31 @@
         </div>
         </div>
     </header>
+     <!-- DISPLAY WORD HTML -->
+     <div id="division" class="mainPageDivision">
+            
+                </div>
+                <div id="required" class="appendedDiv" style="display: none">
+            
+                    <div id="wordNoun" class="wordTypeDiv">
+            
+                        <p class="typeParagraph"></p>
+                        <p class="word"></p>
+            
+                    </div>
+                    <div class="defMainDiv" id="defMainDiv">
+                    <p id="definition" class="definitionClass"></p>
+                </div>
+                    <button type="button" onclick="openEditModal()" class="editbutton">
+                        <img src = "assets/edit.png" alt="edit Word" class="editimg">
+                    </button>
+                    <button class="deleteImageButton" onclick="deleteWord()">
+                    <img src = "assets/delete.png" alt="Delete Word" class="deleteimg">
+                    </button>
+                </div>
+                <button type="button" onclick="openAddModal()" class="plusbutton">
+                    <img src = "assets/add.png" alt="Add Word" class="addimg">
+                </button>
     <!-- DISPLAY WORD HTML -->
     <div id="division" class="mainPageDivision">
 
@@ -48,8 +74,30 @@
     <button type="button" onclick="openAddModal()" class="plusbutton">
         <img src = "add.png" alt="Add Word" class="addimg">
     </button>
+      <!-- ADD WORD MODAL HTML -->
+      <div class="addDiv" id="add" style="display: none">
+        <div class="wordInputs">
+            <input class="inputForm" type="text" placeholder="Enter the word" id="nameinput" />
+            <select class="inputForm" id="typeinput" >
+                    <option value=""  disabled selected="selected">Choose a type</option>                    
+                    <option value="noun">noun</option>
+                    <option value="verb">Verb</option>
+                    <option value="Pronoun">Pronoun</option>
+                    <option value="Adverb">Adverb</option>
+                    <option value="Adjective">Adjective</option>
+                    </select>
+        </div>
 
-    <script src="/Users/mac/dotDictionary/src/js/functions.js">
+        <div class="defLabelDiv">
+            <textarea class="deftxt" placeholder="Enter The Definition" id="difinput"></textarea>
+        </div>
+        <div class="addCancelDiv">
+            <button type="submit" id="addbtn" class="addbtn" onclick="addWord()">ADD</button>
+            <button type="submit" class="cancelBtn" onclick="canceladd()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="./js/functions.js">
 
     </script>
 

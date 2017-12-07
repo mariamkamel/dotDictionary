@@ -1,9 +1,28 @@
 <head>
-    <link href="styles.css" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
+    <!-- HEADER HTML -->
+    <header class="headerbar" style="display: none">
+        <div class="logo">
+            <img src="logo.png" width="160" height="20">
+        </div>
+        <div class="InputWithIcon">
+            <input type="text" placeholder="Search For a Meaning.." size="55">
+            <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
+            <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
+        </div>
+        <div class="show">
+            <a class="show" onclick="speechRecognition()">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>
+            <label onclick="speechRecognition()">ShowAll</label>
+        </div>
+        </div>
+    </header>
     <!-- DISPLAY WORD HTML -->
     <div id="division" class="mainPageDivision">
 
@@ -17,8 +36,8 @@
 
         </div>
         <div class="defMainDiv" id="defMainDiv">
-        <p id="definition" class="definitionClass"></p>
-    </div>
+            <p id="definition" class="definitionClass"></p>
+        </div>
         <button type="button" onclick="openEditModal()" class="editbutton">
             <img src = "edit.png" alt="edit Word" class="editimg">
         </button>
@@ -29,8 +48,8 @@
     <button type="button" onclick="openAddModal()" class="plusbutton">
         <img src = "add.png" alt="Add Word" class="addimg">
     </button>
-   
-    <script src="./functions.js">
+
+    <script src="/Users/mac/dotDictionary/src/js/functions.js">
 
     </script>
 

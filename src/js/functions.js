@@ -104,3 +104,9 @@ function canceladd(){
     document.getElementById("division");
     
 }
+function speechRecognition() {
+    alert('you have clicked');
+   }
+   function submitSearch(){
+       alert('ANA MESH BUTTON :P')
+   }

@@ -1,0 +1,85 @@
+
+/* ADD WORD MODAL CSS */
+.inputForm {
+    width: 50%;
+    margin: 10pt;
+    align-content: left;
+    border: solid;
+    border-width: 1pt;
+    border-radius: 4pt;
+    height: 25pt;
+    border-color: #E2E2E2;
+    outline: none;
+    
+}
+.addDiv{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    display: flex;
+    top:0;
+    background: white;
+    position: fixed;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    }
+.addCancelDiv {
+    text-align: center;
+}
+.addBtn {      
+    text-decoration: none;
+    background-color: #2dc4f1;
+    color: white;
+    border: none;
+    border-width: 1pt;
+    border-radius: 4pt;
+    border-color: #2dc4f1;
+    outline: none;
+    height: 30pt;    
+    width: 60pt;
+    text-align: center;    
+ }
+ .deftxt {
+    width: 95%;
+    height: 150pt;
+    border: solid;
+    border-width: 1pt;
+    border-radius: 4pt;
+    border-color: #E2E2E2;
+    margin: 10pt;
+    outline: none;
+    
+ }
+
+ .cancelBtn{
+    align-self: center;  
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-width: 1pt;
+    height: 30pt;
+    border-radius: 4pt;
+    border-color: #EEEEEE;
+    outline: none;
+    width: 60pt;
+    text-align: center;    
+ }
+ .wordInputs {
+     display: flex;
+
+ 
+ }
+ .defDiv {
+     display: flex;
+     justify-content: flex-end;
+ }
+ @-webkit-keyframes animatetop{
+     from{
+         top: -300pt;
+         opacity: 0;
+     }
+     to {
+         top:0;
+         opacity: 1;
+     }
+ }

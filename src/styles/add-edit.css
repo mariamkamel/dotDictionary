@@ -1,0 +1,27 @@
+ /* EDIT MODAL CSS */
+.typeInput {
+    width: 30%;
+    margin-left: 10pt;
+    border-width: 1pt;
+    border-radius: 4pt;
+    border: solid;
+    outline: none;
+    border-color:white;
+    
+}
+
+.editDiv{
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top:0;
+    background: white;
+    position: fixed;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+}
+.wordlbl {
+    margin-left: 10pt;
+    font-size: 30pt;
+}

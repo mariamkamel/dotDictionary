@@ -1,8 +1,126 @@
+/* DISPLAY WORDS CSS */
 body{
-    background:white;
-    margin: 0;
-    padding: 0;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    background: rgb(245, 245, 245);
+    
+
+    
 }
+.mainPageDivision{
+    flex-direction: column;
+    margin-bottom: 2pt; 
+    /* ali koptan was here */
+}
+
+.appendedDiv{
+    background: rgb(255, 255, 255);
+    width: 500pt;  
+    box-shadow: 2pt 2pt #D6D6D6;
+    border: 0px solid rgb(245, 245, 245);
+    border-radius: 10px;
+    align-items: flex-start;
+    border-bottom-color: #A8A8A8;
+    position: relative;
+
+}
+.editbutton{
+    color: #A8A8A8;
+    background: rgb(255, 255, 255);
+    font-size: 11pt;    
+    border: none;    
+    font-family: sans-serif;
+    margin-right: 35pt;
+    margin-top: 10pt;
+    top: 0pt;
+    outline: none;
+    float: right;
+    right: 0pt; 
+    position: absolute;
+
+
+}
+.deleteImageButton{
+    background: rgb(255, 255, 255);    
+    border: none;        
+    margin-right: 15pt;    
+    margin-top: 10pt;
+    top: 0pt;
+    height:16pt;
+    align-items: center;
+    width: 16pt;
+    right: 0pt; 
+    outline: none;
+    float: right;
+    position: absolute;    
+    
+    
+}
+.deleteimg{
+    height:9pt;
+    width: 9pt;
+    vertical-align: middle;
+}
+.editimg{
+    height:11pt;
+    width: 11pt;
+    vertical-align: middle;
+}
+.wordTypeDiv{
+    display:block;
+    align-content:flex-start;
+    display: inline-block;
+    height: 10%;
+    margin-left: 10pt;
+    margin-right: 0pt;
+    margin-bottom: 0pt;
+    margin-top: 0pt;
+}
+
+.word{
+    color: #2dc4f1;
+    display: inline-block;
+    font-size: 35pt;
+    margin: 0; 
+    padding: 0;
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+
+.typeParagraph{
+    font-size: 10pt;
+    display: inline-block;
+    font-family: "sans-serif";
+    font-style: italic;
+    margin-left: 5pt;
+}
+.definitionClass{
+    font-family: "sans-serif";
+    word-wrap: break-word;
+    font-size: 12pt;
+    color: #3F3F3F;   
+   margin: 0;
+    font-weight: normal;
+
+}
+.defMainDiv{
+    align-items: center;
+    margin-right: 20pt;
+    margin-top: 0pt;
+    margin-left: 20pt;    
+    margin-bottom: 10pt;
+}
+.plusbutton{
+    position: fixed;
+    right:    80pt;
+    bottom:   60pt;
+    background: rgb(245, 245, 245);
+    border: none;
+    outline: none;
+}
+/* HEADER CSS */
 .headerbar{
     width: 100%;
     background: rgb(45, 196, 241);

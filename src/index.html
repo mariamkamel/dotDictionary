@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dotDictionary</title>
+    <link href="styles.css" rel="stylesheet">
+
 </head>
+
 <body>
-    
+    <!-- DISPLAY WORD HTML -->
+    <div id="division" class="mainPageDivision">
+
+    </div>
+    <div id="required" class="appendedDiv" style="display: none">
+
+        <div id="wordNoun" class="wordTypeDiv">
+
+            <p class="typeParagraph"></p>
+            <p class="word"></p>
+
+        </div>
+        <div class="defMainDiv" id="defMainDiv">
+        <p id="definition" class="definitionClass"></p>
+    </div>
+        <button type="button" onclick="openEditModal()" class="editbutton">
+            <img src = "edit.png" alt="edit Word" class="editimg">
+        </button>
+        <button class="deleteImageButton" onclick="deleteWord()">
+        <img src = "delete.png" alt="Delete Word" class="deleteimg">
+        </button>
+    </div>
+    <button type="button" onclick="openAddModal()" class="plusbutton">
+        <img src = "add.png" alt="Add Word" class="addimg">
+    </button>
+   
+    <script src="./functions.js">
+
+    </script>
+
+
 </body>
-</html>

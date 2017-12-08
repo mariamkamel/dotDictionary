@@ -1,91 +1,88 @@
 
-body{
+body {
     display: flex;    
     flex-direction: column;
     align-items: center;
-    align-content: flex-start;
     background: rgb(245, 245, 245);
-    margin: 0;   
+    margin: 0;  
+    font-family: sans-serif; 
 }
+
 /* HEADER CSS */
-.headerbar{
+.headerbar {
+    flex: 1;
     width: 100%;
-    z-index: 2;
-    background: rgb(45, 196, 241);
-    display: flex;
     height: 50pt;
-    margin-bottom: 10pt;
-    overflow: auto;
-    flex-direction:row;     
     position: fixed;
+    z-index: 2;
+    display: flex;
+    flex-direction:row;     
     align-items: center; 
     justify-content: space-between;
+    background: rgb(45, 196, 241);
+    margin-bottom: 10pt;
 }
-.logo{
-    text-align:center;
+
+.logo {
    float: left;
    margin-left: 20pt;
 }
 
-.SearchText{
-    font-weight: normal;
-    outline: none;
-    font-family: sans-serif;    
-}
-.InputWithIcon{
-
+.searchBar {
     text-align:center;
     float: left;
+    color:white;
 }
-.InputWithIcon i{
+
+.searchBar i {
     margin-left: -25pt;
     color: rgb(45, 196, 241);
 }
-.InputWithIcon a{
+
+.searchBar a {
     margin-left: 15pt;
-    color:white;
 }
-.show{
-  float: right;
-  margin-right:20pt; 
-}
-.show i{
-  color:white;
-  justify-content: center;  
-}
-.showAll{
-  color:white;
-  justify-content: center;
-}
-input[type=text]{
+
+.searchText {
+    font-weight: normal;
+    outline: none;
+    font-family: sans-serif;  
     padding: 7px;
     border: none;
     font-size: 16px;
-    font-family: sans-serif;
-}    
+}
+
+.showAll {
+  float: right;
+  margin-right: 20pt;
+  margin-left: 5pt; 
+  color:white;
+  justify-content: center;  
+}
+
 
 /* DISPLAY WORDS CSS */
 
-.mainPageDivision{
+.mainPageDivision {
     z-index: 1;
-    flex-direction: column;
+    flex: 2;
     margin-top: 60pt;
-    margin-bottom: 2pt; 
     /* ali koptan was here */
 }
 
-.appendedDiv{
+.appendedDiv {
     background: rgb(255, 255, 255);
     width: 500pt;  
     box-shadow: 2pt 2pt #D6D6D6;
     border: 0px solid rgb(245, 245, 245);
     border-radius: 10px;
-    align-items: flex-start;
     border-bottom-color: #A8A8A8;
     position: relative;
-
+    padding: 10pt;
+    margin: 10pt;
 }
-.editbutton{
+
+.editbutton {
     color: #A8A8A8;
     background: rgb(255, 255, 255);
     font-size: 11pt;    
@@ -98,10 +95,9 @@ input[type=text]{
     float: right;
     right: 0pt; 
     position: absolute;
-
-
 }
-.deleteImageButton{
+
+.deleteImageButton {
     background: rgb(255, 255, 255);    
     border: none;        
     margin-right: 15pt;    
@@ -114,20 +110,21 @@ input[type=text]{
     outline: none;
     float: right;
     position: absolute;    
-    
-    
 }
-.deleteimg{
+
+.deleteimg {
     height:9pt;
     width: 9pt;
     vertical-align: middle;
 }
-.editimg{
+
+.editimg {
     height:11pt;
     width: 11pt;
     vertical-align: middle;
 }
-.wordTypeDiv{
+
+.wordTypeDiv {
     display:block;
     align-content:flex-start;
     display: inline-block;
@@ -138,7 +135,7 @@ input[type=text]{
     margin-top: 0pt;
 }
 
-.word{
+.word {
     color: #2dc4f1;
     display: inline-block;
     font-size: 35pt;
@@ -148,71 +145,69 @@ input[type=text]{
     word-wrap: break-word;
 }
 
-.typeParagraph{
+.typeParagraph {
     font-size: 10pt;
     display: inline-block;
     font-family: "sans-serif";
     font-style: italic;
     margin-left: 5pt;
 }
-.definitionClass{
+
+.definitionClass {
     font-family: "sans-serif";
     word-wrap: break-word;
     font-size: 12pt;
     color: #3F3F3F;   
-   margin: 0;
+    margin: 0;
     font-weight: normal;
-
 }
-.defMainDiv{
+
+.defMainDiv {
     align-items: center;
     margin-right: 20pt;
     margin-top: 0pt;
     margin-left: 20pt;    
     margin-bottom: 10pt;
 }
-.plusbutton{
+
+.plusbutton {
     position: fixed;
-    right:    80pt;
-    bottom:   60pt;
+    right:    40pt;
+    bottom:   40pt;
     background: rgb(245, 245, 245);
     border: 0pt;
     border-radius: 50pt;
-    border-color: blue;
     outline: none;
-
 }
-
-
 
  /* EDIT MODAL CSS */
  .typeInput {
     width: 30%;
-    margin-left: 10pt;
     border-width: 1pt;
     border-radius: 4pt;
     border: solid;
     outline: none;
     border-color:white;
-    
 }
 
-.editDiv{
+.editDiv {
+    padding: 10pt;
     z-index: 3;
+    display: flex;
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    display: flex;
     top:0;
     background: white;
     position: fixed;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
 }
+
 .wordlbl {
-    margin-left: 10pt;
     font-size: 30pt;
 }
+
 /* ADD WORD MODAL CSS */
 
 .inputForm {
@@ -224,10 +219,10 @@ input[type=text]{
     border-radius: 4pt;
     height: 25pt;
     border-color: #E2E2E2;
-    outline: none;
-    
+    outline: none;   
 }
-.addDiv{
+
+.addDiv {
     z-index: 3;
     overflow: hidden;
     display: flex;
@@ -238,10 +233,12 @@ input[type=text]{
     position: fixed;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
-    }
+}
+
 .addCancelDiv {
     text-align: center;
 }
+
 .addBtn {      
     text-decoration: none;
     background-color: #2dc4f1;
@@ -254,20 +251,21 @@ input[type=text]{
     height: 30pt;    
     width: 60pt;
     text-align: center;    
- }
- .deftxt {
-    width: 95%;
+}
+
+.deftxt {
+    width: 93%;
     height: 150pt;
     border: solid;
     border-width: 1pt;
     border-radius: 4pt;
     border-color: #E2E2E2;
     margin: 10pt;
-    outline: none;
-    
- }
+    outline: none;  
+    resize: none; 
+}
 
- .cancelBtn{
+.cancelBtn {
     align-self: center;  
     text-decoration: none;
     color: white;
@@ -279,23 +277,24 @@ input[type=text]{
     outline: none;
     width: 60pt;
     text-align: center;    
- }
- .wordInputs {
-     display: flex;
+}
 
- 
- }
- .defDiv {
-     display: flex;
-     justify-content: flex-end;
- }
- @-webkit-keyframes animatetop{
-     from{
-         top: -300pt;
-         opacity: 0;
-     }
-     to {
-         top:0;
-         opacity: 1;
-     }
- }
+.wordInputs {
+    display: flex;
+}
+
+.defDiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@-webkit-keyframes animatetop{
+    from {
+        top: -300pt;
+        opacity: 0;
+    }
+    to {
+        top:0;
+        opacity: 1;
+    }
+}

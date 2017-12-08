@@ -5,51 +5,25 @@
 </head>
 
 <body>
-    
-    <!-- HEADER HTML -->
-    <header class="headerbar" style="display: none">
+
+    <!-- .....................................HEADER HTML......................................... -->
+    <header class="headerbar">
         <div class="logo">
             <img src="assets/logo.png" width="160" height="20">
         </div>
         <div class="InputWithIcon">
-            <input type="text" placeholder="Search For a Meaning.." size="55">
+            <input class="SearchText" type="text" placeholder="Search" size="50">
             <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
             <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
         </div>
         <div class="show">
-            <a class="show" onclick="speechRecognition()">
               <i class="fa fa-eye" aria-hidden="true"></i>
-            </a>
-            <label onclick="speechRecognition()">ShowAll</label>
+            <label class="showAll" onclick="showAllFunc()">ShowAll</label>
         </div>
-        </div>
+       
     </header>
-     <!-- DISPLAY WORD HTML -->
-     <div id="division" class="mainPageDivision">
-            
-                </div>
-                <div id="required" class="appendedDiv" style="display: none">
-            
-                    <div id="wordNoun" class="wordTypeDiv">
-            
-                        <p class="typeParagraph"></p>
-                        <p class="word"></p>
-            
-                    </div>
-                    <div class="defMainDiv" id="defMainDiv">
-                    <p id="definition" class="definitionClass"></p>
-                </div>
-                    <button type="button" onclick="openEditModal()" class="editbutton">
-                        <img src = "assets/edit.png" alt="edit Word" class="editimg">
-                    </button>
-                    <button class="deleteImageButton" onclick="deleteWord()">
-                    <img src = "assets/delete.png" alt="Delete Word" class="deleteimg">
-                    </button>
-                </div>
-                <button type="button" onclick="openAddModal()" class="plusbutton">
-                    <img src = "assets/add.png" alt="Add Word" class="addimg">
-                </button>
-    <!-- DISPLAY WORD HTML -->
+
+    <!-- .....................................DISPLAY WORD HTML......................................... -->
     <div id="division" class="mainPageDivision">
 
     </div>
@@ -65,20 +39,20 @@
             <p id="definition" class="definitionClass"></p>
         </div>
         <button type="button" onclick="openEditModal()" class="editbutton">
-            <img src = "edit.png" alt="edit Word" class="editimg">
+            <img src = "assets/edit.png" alt="edit Word" class="editimg">
         </button>
         <button class="deleteImageButton" onclick="deleteWord()">
-        <img src = "delete.png" alt="Delete Word" class="deleteimg">
+        <img src = "assets/delete.png" alt="Delete Word" class="deleteimg">
         </button>
     </div>
     <button type="button" onclick="openAddModal()" class="plusbutton">
-        <img src = "add.png" alt="Add Word" class="addimg">
+        <img src = "assets/add.png" alt="Add Word" class="addimg">
     </button>
-      <!-- ADD WORD MODAL HTML -->
-      <div class="addDiv" id="add" style="display: none">
+    <!-- .....................................ADD WORD MODAL HTML......................................... -->
+    <div class="addDiv" id="add" style="display: none">
         <div class="wordInputs">
-            <input class="inputForm" type="text" placeholder="Enter the word" id="nameinput" />
-            <select class="inputForm" id="typeinput" >
+                <input class="inputForm" placeholder="Enter the word" id="nameinput" />
+                <select class="inputForm" id="typeinput">
                     <option value=""  disabled selected="selected">Choose a type</option>                    
                     <option value="noun">noun</option>
                     <option value="verb">Verb</option>
@@ -96,7 +70,29 @@
             <button type="submit" class="cancelBtn" onclick="canceladd()">Cancel</button>
         </div>
     </div>
-
+    <!-- .....................................EDIT WORD MODAL HTML......................................... -->
+    <div class="editDiv" id="editmodal" style="display: none">
+            <label id="wordlbl" class="wordlbl" type="text"></label>
+            <div class="labelDiv">
+                    
+            <select class="typeInput" id="editTypeInput">
+                <option value=""  disabled selected="selected">Choose a type</option>
+                <option value="noun">noun</option>
+                <option value="verb">Verb</option>
+                <option value="Pronoun">Pronoun</option>
+                <option value="Adverb">Adverb</option>
+                <option value="Adjective">Adjective</option>
+                </select>
+        </div>
+        
+            <div class="defDiv">
+                <textarea class="deftxt" id="editDifInput" placeholder="Edit The Definition"></textarea>
+            </div>
+            <div class="addCancelDiv">
+                <button type="submit" id="editbtn" class="addbtn" onclick="editWord()">Edit</button>
+                <button type="submit" class="cancelBtn" onclick="canceledit()">Cancel</button>
+            </div>
+        </div>
     <script src="./js/functions.js">
 
     </script>

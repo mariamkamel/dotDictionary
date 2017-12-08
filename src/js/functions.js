@@ -39,7 +39,11 @@ function appending(word,definition,Type) {
     var defDiv = req.childNodes[3];
     var cloned = req.cloneNode(true);
     var type = document.createElement("P");
-    var t = document.createTextNode(Type);
+    var t = document.createTextNode(".");
+    type.appendChild(t);
+    t =document.createTextNode(Type);
+    type.appendChild(t);
+    t = document.createTextNode(".");
     type.appendChild(t);
     type.className += "typeParagraph";
     var w = document.createElement("P");
@@ -107,6 +111,10 @@ function canceladd(){
 function speechRecognition() {
     alert('you have clicked');
    }
-   function submitSearch(){
+function submitSearch(){
        alert('ANA MESH BUTTON :P')
+   }
+function showAllFunc(){
+    alert("Show All");
+    
    }

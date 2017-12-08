@@ -6,6 +6,13 @@ body {
     background: rgb(245, 245, 245);
     margin: 0;  
     font-family: sans-serif; 
+     -webkit-user-select:none;
+}
+button {
+    cursor : pointer;
+}
+button:hover{
+    background-color: red;
 }
 
 /* HEADER CSS */
@@ -37,10 +44,12 @@ body {
 .searchBar i {
     margin-left: -25pt;
     color: rgb(45, 196, 241);
+    cursor : pointer;
 }
 
 .searchBar a {
     margin-left: 15pt;
+    cursor : pointer;
 }
 
 .searchText {
@@ -58,6 +67,7 @@ body {
   margin-left: 5pt; 
   color:white;
   justify-content: center;  
+  cursor : pointer;
 }
 
 
@@ -178,6 +188,7 @@ body {
     border: 0pt;
     border-radius: 50pt;
     outline: none;
+    
 }
 
  /* EDIT MODAL CSS */

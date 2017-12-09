@@ -6,13 +6,16 @@ body {
     background: rgb(245, 245, 245);
     margin: 0;  
     font-family: sans-serif; 
-     -webkit-user-select:none;
+    -webkit-user-select: none;
 }
-button {
+
+[onclick] {
     cursor : pointer;
 }
-button:hover{
-    background-color: red;
+
+[onclick]:hover {
+    /*background-color: red;*/
+    filter: brightness(85%);
 }
 
 /* HEADER CSS */
@@ -44,18 +47,15 @@ button:hover{
 .searchBar i {
     margin-left: -25pt;
     color: rgb(45, 196, 241);
-    cursor : pointer;
 }
 
 .searchBar a {
     margin-left: 15pt;
-    cursor : pointer;
 }
 
 .searchText {
     font-weight: normal;
     outline: none;
-    font-family: sans-serif;  
     padding: 7px;
     border: none;
     font-size: 16px;
@@ -67,7 +67,6 @@ button:hover{
   margin-left: 5pt; 
   color:white;
   justify-content: center;  
-  cursor : pointer;
 }
 
 
@@ -97,7 +96,6 @@ button:hover{
     background: rgb(255, 255, 255);
     font-size: 11pt;    
     border: none;    
-    font-family: sans-serif;
     margin-right: 35pt;
     margin-top: 10pt;
     top: 0pt;
@@ -146,6 +144,7 @@ button:hover{
 }
 
 .word {
+    -webkit-user-select: auto;
     color: #2dc4f1;
     display: inline-block;
     font-size: 35pt;
@@ -158,13 +157,11 @@ button:hover{
 .typeParagraph {
     font-size: 10pt;
     display: inline-block;
-    font-family: "sans-serif";
     font-style: italic;
     margin-left: 5pt;
 }
 
 .definitionClass {
-    font-family: "sans-serif";
     word-wrap: break-word;
     font-size: 12pt;
     color: #3F3F3F;   
@@ -173,6 +170,7 @@ button:hover{
 }
 
 .defMainDiv {
+    -webkit-user-select: auto;
     align-items: center;
     margin-right: 20pt;
     margin-top: 0pt;
@@ -182,13 +180,13 @@ button:hover{
 
 .plusbutton {
     position: fixed;
-    right:    40pt;
-    bottom:   40pt;
-    background: rgb(245, 245, 245);
+    z-index: 4;
+    right: 40pt;
+    bottom: 40pt;
+    background: rgba(245, 245, 245, 0);
     border: 0pt;
     border-radius: 50pt;
     outline: none;
-    
 }
 
  /* EDIT MODAL CSS */

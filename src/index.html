@@ -16,7 +16,7 @@
             <img src="assets/logo.png" height="20">
         </div>
         <div class="searchBar">
-            <input class="searchText" type="text" placeholder="Search" size="50">
+            <input class="searchText" id="searchField" type="text" placeholder="Search" size="50">
             <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
             <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
         </div>
@@ -27,8 +27,7 @@
     </header>
 
     <!-- .....................................DISPLAY WORD HTML......................................... -->
-    <div id="division" class="mainPageDivision">
-    </div>
+    <div id="division" class="mainPageDivision"></div>
 
     <div id="required" class="appendedDiv" style="display: none">
         <div id="wordNoun" class="wordTypeDiv">
@@ -38,17 +37,17 @@
         <div class="defMainDiv" id="defMainDiv">
             <p id="definition" class="definitionClass"></p>
         </div>
-        <button type="button" class="editbutton">
+        <button type="button" class="editbutton" onclick>
             <img src = "assets/edit.png" alt="edit Word" class="editimg">
         </button>
-        <button class="deleteImageButton">
+        <button class="deleteImageButton" onclick>
             <img src = "assets/delete.png" alt="Delete Word" class="deleteimg">
         </button>
     </div>
 
-    <button type="button" onclick="openAddModal()" class="plusbutton">
+    <div onclick="openAddModal()" class="plusbutton">
         <img src = "assets/add.png" alt="Add Word" class="addimg">
-    </button>
+    </div>
 
     <!-- .....................................ADD WORD MODAL HTML......................................... -->
     <div class="addDiv" id="add" style="display: none">

@@ -1,5 +1,6 @@
 const {remote} = require('electron');
 const {dictionary} = remote.require('./main.js');
+const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 
 let showAll = false;
 displayDefaultContent();
@@ -173,7 +174,15 @@ function renderElements(result) {
 }
 
 function searchOnline() {
-    alert("API");
+    const query = document.getElementById('searchField').value;
+    DictionaryAPI.getDefinition(query).then(definition => {
+        dictionary.insert(query, 'noun', definition);
+        renderElements(dictionary.search(query));
+        console.log(definition);
+    }).catch(err => {
+        alert('Sorry an error occured.');
+        console.log(err);
+    });
 }
 
 function displayDefaultContent() {

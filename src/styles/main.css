@@ -5,10 +5,15 @@ body {
     height: 100%;
     flex-direction: column;
     align-items: center;
-    background: rgb(245, 245, 245);
+    background-color: var(--backgroundColor);
     margin: 0;  
     font-family: sans-serif; 
     -webkit-user-select: none;
+    --primaryWhite: white;
+    --mainColor: #2dc4f1;
+    --backgroundColor: #f3f3f3;
+    --borderColor: #E2E2E2;
+    --secondayBtnColor: #CCC;
 }
 
 [onclick] {
@@ -17,7 +22,7 @@ body {
 
 [onclick]:hover {
     /*background-color: red;*/
-    filter: brightness(85%);
+    filter: brightness(105%);
 }
 
 /* HEADER CSS */
@@ -31,24 +36,24 @@ body {
     flex-direction:row;     
     align-items: center; 
     justify-content: space-between;
-    background: rgb(45, 196, 241);
+    background: var(--mainColor);
     margin-bottom: 10pt;
 }
 
 .logo {
    float: left;
-   margin-left: 20pt;
+   margin-left: 10pt;
 }
 
 .searchBar {
     text-align:center;
     float: left;
-    color:white;
+    color:var(--primaryWhite);
 }
 
 .searchBar i {
     margin-left: -25pt;
-    color: rgb(45, 196, 241);
+    color: var(--mainColor)
 }
 
 .searchBar a {
@@ -67,7 +72,7 @@ body {
   float: right;
   margin-right: 20pt;
   margin-left: 5pt; 
-  color:white;
+  color:var(--primaryWhite);
   justify-content: center;  
 }
 
@@ -87,17 +92,17 @@ body {
     background: rgb(255, 255, 255);
     width: 500pt;  
     box-shadow: 2pt 2pt #D6D6D6;
-    border: 0px solid rgb(245, 245, 245);
+    border: 0px solid var(--backgroundColor);
     border-radius: 10px;
-    border-bottom-color: #A8A8A8;
+    border-bottom-color: var(--borderColor);
     position: relative;
     padding: 10pt;
     margin: 10pt;
 }
 
 .editbutton {
-    color: #A8A8A8;
-    background: rgb(255, 255, 255);
+    color:  var(--backgroundColor);
+    background:var(--primaryWhite);
     font-size: 11pt;    
     border: none;    
     margin-right: 35pt;
@@ -110,7 +115,7 @@ body {
 }
 
 .deleteImageButton {
-    background: rgb(255, 255, 255);    
+    background: var(--primaryWhite);    
     border: none;        
     margin-right: 15pt;    
     margin-top: 10pt;
@@ -149,7 +154,7 @@ body {
 
 .word {
     -webkit-user-select: auto;
-    color: #2dc4f1;
+    color: var(--mainColor);
     display: inline-block;
     font-size: 35pt;
     margin: 0; 
@@ -200,7 +205,8 @@ body {
     border-radius: 4pt;
     border: solid;
     outline: none;
-    border-color:white;
+    border-color:var(--primaryWhite);
+    margin: 10pt;
 }
 
 .editDiv {
@@ -211,7 +217,7 @@ body {
     align-items: center;
     justify-content: center;
     top:0;
-    background: white;
+    background: var(--primaryWhite);
     position: fixed;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -219,6 +225,7 @@ body {
 
 .wordlbl {
     font-size: 30pt;
+    margin: 10pt;
 }
 
 /* ADD WORD MODAL CSS */
@@ -231,7 +238,7 @@ body {
     border-width: 1pt;
     border-radius: 4pt;
     height: 25pt;
-    border-color: #E2E2E2;
+    border-color: var(--borderColor);
     outline: none;   
 }
 
@@ -242,7 +249,7 @@ body {
     align-items: center;
     display: flex;
     top:0;
-    background: white;
+    background: var(--primaryWhite);
     position: fixed;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -254,12 +261,12 @@ body {
 
 .addBtn {      
     text-decoration: none;
-    background-color: #2dc4f1;
-    color: white;
+    background-color: var(--mainColor);
+    color: var(--primaryWhite);
     border: none;
     border-width: 1pt;
     border-radius: 4pt;
-    border-color: #2dc4f1;
+    border-color: var(--mainColor);
     outline: none;
     height: 30pt;    
     width: 60pt;
@@ -272,7 +279,7 @@ body {
     border: solid;
     border-width: 1pt;
     border-radius: 4pt;
-    border-color: #E2E2E2;
+    border-color: var(--borderColor);
     margin: 10pt;
     outline: none;  
     resize: none; 
@@ -281,12 +288,13 @@ body {
 .cancelBtn {
     align-self: center;  
     text-decoration: none;
-    color: white;
+    color: var(--primaryWhite);
+    background-color: var(--secondayBtnColor);
     border: none;
     border-width: 1pt;
     height: 30pt;
     border-radius: 4pt;
-    border-color: #EEEEEE;
+    border-color: var(--borderColor);
     outline: none;
     width: 60pt;
     text-align: center;    

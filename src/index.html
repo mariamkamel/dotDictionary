@@ -12,17 +12,17 @@
 
     <!-- .....................................HEADER HTML......................................... -->
     <header class="headerbar">
-        <div class="logo">
-            <img src="assets/logo.png" height="20">
+        <div class="logo" onclick="displayDefaultContent()">
+            <img src="assets/logo.png" height="18">
         </div>
         <div class="searchBar">
             <input class="searchText" id="searchField" type="text" placeholder="Search" size="50">
             <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
             <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
         </div>
-        <div class="showAll">
-            <i class="fa fa-eye" aria-hidden="true"></i>
-            <label class="showAll" onclick="showAllFunc()">ShowAll</label>
+        <div class="showAll" onclick="showAllFunc()">
+            <i class="fa fa-eye" aria-hidden="true" ></i>
+            <label style="cursor: pointer">ShowAll</label>
         </div>
     </header>
 
@@ -95,5 +95,5 @@
         </div>
     </div>
 
-    <script src="./js/functions.js"></script>
+    <script src="./js/index.js"></script>
 </body>

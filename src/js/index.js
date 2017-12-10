@@ -14,7 +14,7 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
 function openAddModal() {
     canceledit();
     const modal = document.getElementById("add");
-    modal.style.minHeight = "260pt";
+    modal.style.minHeight = "270pt";
     modal.style.minWidth = "350pt";
     modal.style.display = "block";
 }

@@ -15,6 +15,7 @@ class Trie {
 
     insert(word, type, definition) {
         word = word.toLowerCase();
+
         let node = this.root;
         for (let i = 0; i < word.length; ++i) {
             if (!node.children[word[i]]) {
@@ -48,6 +49,27 @@ class Trie {
         }
 
         return true;
+    }
+
+    delete(word) {
+        word = word.toLowerCase();
+        if (!this.contains(word)) {
+            return;
+        }
+
+        let node = this.root;
+        let i;
+        for (i = 0; i < word.length; ++i) {
+            if (this.search(word.substring(0, i)).length == 1) {
+                node.children = [];
+                this.size--;
+                return;
+            } else {
+                node = node.children[word[i]];
+            }
+        }
+        node.children[word[i]] = undefined;
+        this.size--;
     }
 
     getAll(head = this.root, path = "", tree = []) {

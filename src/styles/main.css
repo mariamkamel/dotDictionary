@@ -105,7 +105,7 @@ body {
     background:var(--primaryWhite);
     font-size: 11pt;    
     border: none;    
-    margin-right: 35pt;
+    margin-right: 25pt;
     margin-top: 10pt;
     top: 0pt;
     outline: none;
@@ -129,9 +129,11 @@ body {
     position: absolute;    
 }
 
-.deleteimg {
-    height:9pt;
-    width: 9pt;
+.appendedDiv i{
+    margin-top: 2pt;
+    height:20pt;
+    width: 20pt;
+    color:var(--secondayBtnColor);
     vertical-align: middle;
 }
 
@@ -188,14 +190,25 @@ body {
 }
 
 .plusbutton {
+    display: flex;
+
+    height: 40pt;
+    width: 40pt;
+    border-radius: 50%;
     position: fixed;
     z-index: 4;
-    right: 40pt;
     bottom: 40pt;
-    background: rgba(245, 245, 245, 0);
+    right: 40pt;
+    background: var(--mainColor);
     border: 0pt;
     border-radius: 50pt;
     outline: none;
+    align-items: center;
+}
+.plusbutton i {
+    color: var(--primaryWhite);
+    margin-left: 7pt;
+    font-size: 40pt;
 }
 
  /* EDIT MODAL CSS */

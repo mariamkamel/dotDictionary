@@ -105,15 +105,29 @@ body {
     background:var(--primaryWhite);
     font-size: 11pt;    
     border: none;    
-    margin-right: 35pt;
+    margin-right: 41pt;
     margin-top: 10pt;
+    width:16pt;
     top: 0pt;
     outline: none;
     float: right;
     right: 0pt; 
     position: absolute;
 }
-
+.speechButton{
+     background: var(--primaryWhite);    
+    border: none;        
+     width:16pt;
+    margin-right: 67pt;    
+    margin-top: 10pt;
+    top: 0pt;
+    height:16pt;
+    align-items: center;
+    right: 0pt; 
+    outline: none;
+    float: right;
+    position: absolute; 
+}
 .deleteImageButton {
     background: var(--primaryWhite);    
     border: none;        
@@ -129,9 +143,11 @@ body {
     position: absolute;    
 }
 
-.deleteimg {
-    height:9pt;
-    width: 9pt;
+.appendedDiv i{
+    margin-top: 2pt;
+    height:20pt;
+    width: 20pt;
+    color:var(--secondayBtnColor);
     vertical-align: middle;
 }
 
@@ -188,14 +204,25 @@ body {
 }
 
 .plusbutton {
+    display: flex;
+
+    height: 40pt;
+    width: 40pt;
+    border-radius: 50%;
     position: fixed;
     z-index: 4;
-    right: 40pt;
     bottom: 40pt;
-    background: rgba(245, 245, 245, 0);
+    right: 40pt;
+    background: var(--mainColor);
     border: 0pt;
     border-radius: 50pt;
     outline: none;
+    align-items: center;
+}
+.plusbutton i {
+    color: var(--primaryWhite);
+    margin-left: 7pt;
+    font-size: 40pt;
 }
 
  /* EDIT MODAL CSS */

@@ -16,7 +16,7 @@
             <img src="assets/logo.png" height="18">
         </div>
         <div class="searchBar">
-            <input class="searchText" id="searchField" type="text" placeholder="Search" size="50">
+            <input class="searchText" id="searchField" type="text" placeholder="Search" size="50" onkeyup="typingSearch()">
             <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
             <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
         </div>
@@ -98,7 +98,6 @@
             <button type="submit" class="cancelBtn" onclick="canceledit()">Cancel</button>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>    
     <script src="./js/index.js"></script>
     
 </body>

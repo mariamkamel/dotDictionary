@@ -5,10 +5,9 @@ const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 let showAll = false;
 displayDefaultContent();
 
-$( "#searchField" ).keyup(function() {
-    submitSearch(); 
- });
-
+function typingSearch(){
+    submitSearch();
+}
 document.getElementById("searchField").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {

@@ -8,17 +8,16 @@
     <title>dotDictionary</title>
 </head>
 
-<body>
+<body  onload="hideLoader()">
 
     <!-- .....................................HEADER HTML......................................... -->
     <header class="headerbar">
-        <div class="logo" onclick="displayDefaultContent()">
+        <div class="logo" onclick="displayDefaultContent()" onload="hideLoader()">
             <img src="assets/logo.png" height="18">
         </div>
         <div class="searchBar">
             <input class="searchText" id="searchField" type="text" placeholder="Search" size="50">
             <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
-            <a class="fa fa-microphone fa-lg" onclick="speechRecognition()"></a>
         </div>
         <div class="showAll" onclick="showAllFunc()">
             <i class="fa fa-eye" aria-hidden="true" ></i>
@@ -98,6 +97,10 @@
             <button type="submit" class="cancelBtn" onclick="canceledit()">Cancel</button>
         </div>
     </div>
+
+        <!-- .....................................LOADING INDICATOR HTML......................................... -->
+        <div id="loading">
+        </div>
 
     <script src="./js/index.js"></script>
 </body>

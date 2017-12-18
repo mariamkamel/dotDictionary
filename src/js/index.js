@@ -5,6 +5,10 @@ const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 let showAll = false;
 displayDefaultContent();
 
+$( "#searchField" ).keyup(function() {
+    submitSearch(); 
+ });
+
 document.getElementById("searchField").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
@@ -139,8 +143,9 @@ function speechRecognition() {
 }
 
 function submitSearch() {
-    showAll = false;
+    showAll = false;    
     const query = document.getElementById('searchField').value;
+    
     if (!query) {
         displayDefaultContent();
         return;
@@ -165,6 +170,7 @@ function submitSearch() {
             </div>
         `;
     }
+    
 }
 
 function showAllFunc() {

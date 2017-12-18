@@ -16,8 +16,7 @@
             <img src="assets/logo.png" height="18">
         </div>
         <div class="searchBar">
-            <input class="searchText" id="searchField" type="text" placeholder="Search" size="50">
-            <i class="fa fa-search" aria-hidden="true" onclick="submitSearch()"></i>
+            <input class="searchText" id="searchField" type="text" placeholder="Search" size="50" onkeyup="submitSearch()">
         </div>
         <div class="showAll" onclick="showAllFunc()">
             <i class="fa fa-eye" aria-hidden="true" ></i>
@@ -98,9 +97,10 @@
         </div>
     </div>
 
-        <!-- .....................................LOADING INDICATOR HTML......................................... -->
-        <div id="loading">
-        </div>
-
+    <!-- .....................................LOADING INDICATOR HTML......................................... -->
+    <div id="loading">
+    </div>
+  
     <script src="./js/index.js"></script>
+    
 </body>

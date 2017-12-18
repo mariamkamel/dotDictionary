@@ -135,9 +135,11 @@ function canceladd() {
 }
 
 function submitSearch() {
-    showAll = false;
+    showAll = false;    
     const query = document.getElementById('searchField').value;
+
     hideLoader();    
+
     if (!query) {
         displayDefaultContent();
         return;
@@ -162,6 +164,7 @@ function submitSearch() {
             </div>
         `;
     }
+    
 }
 
 function showAllFunc() {

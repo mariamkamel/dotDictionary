@@ -10,7 +10,10 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
         submitSearch();
     }
 });
-
+function textToSpeech(word){
+    var msg = new SpeechSynthesisUtterance(word);
+    window.speechSynthesis.speak(msg);
+}
 function openAddModal() {
     canceledit();
     const modal = document.getElementById("add");
@@ -30,6 +33,7 @@ function addWord() {
         err = "You Should Enter A Type.";
     } else if (!definition.length) {
         err = "You Should Enter A Definition.";  
+
     } else if (dictionary.contains(word)) {
         err = "This word is already in the dictionary.";
     } else {
@@ -63,6 +67,9 @@ function appendWord(word, definition, type) {
         if (confirmation) {
             deleteWord(word);
         }
+    });
+     element.childNodes[9].addEventListener('click', function(e) {
+        textToSpeech(word);
     });
 
     wordElement.innerHTML = word;

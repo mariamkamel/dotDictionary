@@ -5,9 +5,6 @@ const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 let showAll = false;
 displayDefaultContent();
 
-function typingSearch(){
-    submitSearch();
-}
 document.getElementById("searchField").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
@@ -137,14 +134,12 @@ function canceladd() {
     document.getElementById("add").style.display = "none";
 }
 
-function speechRecognition() {
-    alert('you have clicked');
-}
-
 function submitSearch() {
     showAll = false;    
     const query = document.getElementById('searchField').value;
-    
+
+    hideLoader();    
+
     if (!query) {
         displayDefaultContent();
         return;
@@ -156,7 +151,7 @@ function submitSearch() {
     } else {
         let main = document.getElementById('division');
         main.innerHTML = `
-            <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 100pt">
+            <div id="SearchResultDiv" style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 100pt">
                 <p>No results found</p>
                 <button 
                     type="submit"
@@ -173,6 +168,7 @@ function submitSearch() {
 }
 
 function showAllFunc() {
+    hideLoader();
     showAll = true;
     document.getElementById('searchField').value = null;
     renderElements(dictionary.getAll());
@@ -187,11 +183,15 @@ function renderElements(result) {
 
 function searchOnline() {
     const query = document.getElementById('searchField').value;
+    showLoading();
+    document.getElementById('SearchResultDiv').style.display = "none"
     DictionaryAPI.getDefinition(query).then(definition => {
+        hideLoader();
         dictionary.insert(query, 'noun', definition);
         renderElements(dictionary.search(query));
         console.log(definition);
     }).catch(err => {
+        hideLoader();        
         alert('Sorry an error occured.');
         console.log(err);
     });
@@ -204,4 +204,12 @@ function displayDefaultContent() {
             <p>Search for a Word defintion to show results</p>
         </div>
     `;
+}
+
+function hideLoader(){
+    document.getElementById("loading").style.display = "none";
+}
+
+function showLoading() {
+    document.getElementById("loading").style.display = "block";
 }

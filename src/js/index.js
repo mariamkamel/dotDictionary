@@ -2,6 +2,7 @@ const {remote} = require('electron');
 const {dictionary} = remote.require('./main.js');
 
 let showAll = false;
+let speech = false;
 displayDefaultContent();
 
 document.getElementById("searchField").addEventListener("keyup", function(event) {
@@ -11,7 +12,17 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
     }
 });
 function textToSpeech(word){
+    if (speech) return;
+    speech = true;
     var msg = new SpeechSynthesisUtterance(word);
+    let btn = document.getElementById('speech').childNodes;
+    btn[1].style.color = "red";
+
+    msg.onend = function (e) {
+        speech = false;
+        btn[1].style.color = "#CCC";
+    };
+
     window.speechSynthesis.speak(msg);
 }
 function openAddModal() {

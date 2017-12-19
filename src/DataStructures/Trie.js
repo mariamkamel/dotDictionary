@@ -68,7 +68,13 @@ class Trie {
                 node = node.children[word[i]];
             }
         }
-        node.children[word[i]] = undefined;
+        if (this.search(word.substring(0, i)).length == 1) {
+            node = undefined;
+        } else {
+            node.type = undefined;
+            node.definition = undefined;
+            node.end = undefined;
+        }
         this.size--;
     }
 
@@ -96,7 +102,7 @@ class Trie {
     search(prefix) {
         prefix = prefix.toLowerCase();
         let node = this.root;
-        //console.log(node.children);
+
         for(let i = 0; i < prefix.length; ++i) {
             if (!node.children[prefix[i]]) {
                 return null;

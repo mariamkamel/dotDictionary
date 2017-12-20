@@ -157,8 +157,8 @@ function submitSearch() {
     };
     
     let searchResult = dictionary.search(query);
-    if (searchResult) {
-        renderElements(dictionary.search(query));
+    if (searchResult.length) {
+        renderElements(searchResult);
     } else {
         let main = document.getElementById('division');
         main.innerHTML = `

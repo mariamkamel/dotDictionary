@@ -99,49 +99,16 @@ body {
     padding: 10pt;
     margin: 10pt;
 }
-
-.editbutton {
-    color:  var(--backgroundColor);
-    background:var(--primaryWhite);
-    font-size: 11pt;    
-    border: none;    
-    margin-right: 41pt;
-    margin-top: 10pt;
-    width:16pt;
-    top: 0pt;
-    outline: none;
+.iconsDiv{
+    /* justify-content: space-between; */
+    align-content:flex-start;
     float: right;
-    right: 0pt; 
+    margin-top: 5pt;
+    top: 0pt;
+    right: 0pt;
     position: absolute;
 }
-.speechButton{
-     background: var(--primaryWhite);    
-    border: none;        
-     width:16pt;
-    margin-right: 67pt;    
-    margin-top: 10pt;
-    top: 0pt;
-    height:16pt;
-    align-items: center;
-    right: 0pt; 
-    outline: none;
-    float: right;
-    position: absolute; 
-}
-.deleteImageButton {
-    background: var(--primaryWhite);    
-    border: none;        
-    margin-right: 15pt;    
-    margin-top: 10pt;
-    top: 0pt;
-    height:16pt;
-    align-items: center;
-    width: 16pt;
-    right: 0pt; 
-    outline: none;
-    float: right;
-    position: absolute;    
-}
+
 
 .appendedDiv i{
     margin-top: 2pt;
@@ -151,11 +118,6 @@ body {
     vertical-align: middle;
 }
 
-.editimg {
-    height:11pt;
-    width: 11pt;
-    vertical-align: middle;
-}
 
 .wordTypeDiv {
     display:block;

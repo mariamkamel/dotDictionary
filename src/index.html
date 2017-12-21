@@ -25,32 +25,28 @@
     </header>
 
     <!-- .....................................DISPLAY WORD HTML......................................... -->
+
     <div id="division" class="mainPageDivision"></div>
-
-    <div id="required" class="appendedDiv" style="display: none">
-        <div id="wordNoun" class="wordTypeDiv">
-            <p class="word"></p>
-            <p class="typeParagraph"></p>
+    
+        <div id="required" class="appendedDiv" style="display: none">
+            <div id="wordNoun" class="wordTypeDiv">
+                <p class="word"></p>
+                <p class="typeParagraph"></p>
+            </div>
+            <div class="defMainDiv" id="defMainDiv">
+                <p id="definition" class="definitionClass"></p>
+            </div>
+            <div class="iconsDiv" id="iconsDivision">
+                <i class="fa fa-volume-up" aria-hidden="true" id="speechIcon" onclick></i>                    
+                <i class="fa fa-edit" aria-hidden="true" onclick></i>
+                <i class="fa fa-trash" aria-hidden="true"  onclick></i>
+            </div>
         </div>
-        <div class="defMainDiv" id="defMainDiv">
-            <p id="definition" class="definitionClass"></p>
+    
+        <div onclick="openAddModal()" class="plusbutton">
+          <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+          <i> +</i>
         </div>
-        <button type="button" class="editbutton" onclick>
-            <i class="fa fa-edit" aria-hidden="true" class="editimg"></i>
-        </button>
-        <button class="deleteImageButton" onclick>
-            <i class="fa fa-trash" aria-hidden="true" class="deleteimg"></i>
-        </button>
-          <button class="speechButton" onclick id="speech">
-            <i class="fa fa-volume-up" aria-hidden="true" class="Speechimg" id="speechIcon"></i>
-        </button>
-    </div>
-
-    <div onclick="openAddModal()" class="plusbutton">
-      <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
-      <i> +</i>
-    </div>
-
     <!-- .....................................ADD WORD MODAL HTML......................................... -->
     <div class="addDiv" id="add" style="display: none">
         <div class="wordInputs">

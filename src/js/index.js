@@ -15,15 +15,9 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
 function textToSpeech(word){
     if (speech) return;
     speech = true;
-    var msg = new SpeechSynthesisUtterance(word);
-    let btn = document.getElementById('speech').childNodes;
-    btn[1].style.color = "red";
-
-    msg.onend = function (e) {
-        speech = false;
-        btn[1].style.color = "#CCC";
-    };
-
+    
+    var msg = new SpeechSynthesisUtterance(word);    
+ 
     window.speechSynthesis.speak(msg);
 }
 function openAddModal() {
@@ -69,18 +63,18 @@ function appendWord(word, definition, type) {
     let wordElement = element.childNodes[1].childNodes[1];
     let typeElement = element.childNodes[1].childNodes[3];
     let defElement = element.childNodes[3];
-    
-    element.childNodes[5].addEventListener('click', function(e) {
+    let iconsDiv = element.childNodes[5];
+    iconsDiv.childNodes[3].addEventListener('click', function(e) {
         openEditModal(word, type, definition);
     });
 
-    element.childNodes[7].addEventListener('click', function(e) {
+    iconsDiv.childNodes[5].addEventListener('click', function(e) {
         let confirmation = confirm('Are you sure you want to delete this word?');
         if (confirmation) {
             deleteWord(word);
         }
     });
-     element.childNodes[9].addEventListener('click', function(e) {
+     iconsDiv.childNodes[1].addEventListener('click', function(e) {
         textToSpeech(word);
     });
 

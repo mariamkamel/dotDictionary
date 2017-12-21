@@ -176,8 +176,17 @@ function showAllFunc() {
     hideLoader();
     showAll = true;
     document.getElementById('searchField').value = null;
-    renderElements(dictionary.getAll());
-}
+    if(dictionary.length()!=0){
+        renderElements(dictionary.getAll());
+        }
+        else{
+            let main = document.getElementById('division');
+            main.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 100pt">
+                    <p>There are no Words in the Dictionary</p>
+                </div>
+            `;
+        }}
 
 function renderElements(result) {
     document.getElementById('division').innerHTML = null;

@@ -1,5 +1,5 @@
 const {remote} = require('electron');
-const {dictionary} = remote.require('./main.js');
+const {dictionary, history} = remote.require('./main.js');
 const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 
 let showAll = false;
@@ -12,14 +12,15 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
         submitSearch();
     }
 });
+
 function textToSpeech(word){
     if (speech) return;
     speech = true;
-    
-    var msg = new SpeechSynthesisUtterance(word);    
- 
+        var msg = new SpeechSynthesisUtterance(word);
+
     window.speechSynthesis.speak(msg);
 }
+
 function openAddModal() {
     canceledit();
     const modal = document.getElementById("add");
@@ -39,7 +40,6 @@ function addWord() {
         err = "You Should Enter A Type.";
     } else if (!definition.length) {
         err = "You Should Enter A Definition.";  
-
     } else if (dictionary.contains(word)) {
         err = "This word is already in the dictionary.";
     } else {
@@ -47,10 +47,10 @@ function addWord() {
         renderElements(dictionary.search(word));
         document.getElementById('searchField').value = word;
         document.getElementById("add").style.display = "none";
-
         document.getElementById('nameinput').value = null;
         document.getElementById('typeinput').value = "";
         document.getElementById('difinput').value = null;
+        history.addAction(dictionary.insert, dictionary.delete, [word, type, definition], [word]);
         return;
     }
     alert(err);
@@ -74,7 +74,7 @@ function appendWord(word, definition, type) {
             deleteWord(word);
         }
     });
-     iconsDiv.childNodes[1].addEventListener('click', function(e) {
+    iconsDiv.childNodes[1].addEventListener('click', function(e) {
         textToSpeech(word);
     });
 
@@ -87,7 +87,9 @@ function appendWord(word, definition, type) {
 }
 
 function deleteWord(word) {
+    let {type, definition} = dictionary.getInfo(word);
     dictionary.delete(word);
+    history.addAction(dictionary.delete, dictionary.insert, [word], [word, type, definition]);    
     if (showAll) {
         renderElements(dictionary.getAll());
     } else {
@@ -98,15 +100,17 @@ function deleteWord(word) {
 
 function editWord() {
     const word =  document.getElementById('wordlbl').textContent;    
-    const type = document.getElementById('editTypeInput').value;
-    const definition = document.getElementById('editDifInput').value;
+    const newType = document.getElementById('editTypeInput').value;
+    const newDefinition = document.getElementById('editDifInput').value;
     let err = "";
-    if (!type.length) {
+    if (!newType.length) {
         err = "You Should Enter A Type.\n";
-    } else if (!definition.length) {
+    } else if (!newDefinition.length) {
         err = "You Should Enter A Definition."; 
     } else {
-        dictionary.edit(word, type, definition);
+        let {type, definition} = dictionary.getInfo(word);
+        dictionary.edit(word, newType, newDefinition);
+        history.addAction(dictionary.edit, dictionary.edit,  [word, newType, newDefinition], [word, type, definition]);            
         if (showAll) {
             renderElements(dictionary.getAll());
         } else {

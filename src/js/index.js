@@ -12,6 +12,28 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
         submitSearch();
     }
 });
+
+function openTranslateModal(word){
+    canceladd();
+    canceledit();
+    const modal = document.getElementById("translateModal");
+    document.getElementById('translatedWordlbl').innerHTML = word;
+   
+    modal.style.minHeight = "240pt";
+    modal.style.minWidth = "350pt";
+    modal.style.display = "block";
+    
+}
+function translateWord(){
+    const language = document.getElementById('translateInput').value;
+    if(language==="Arabic"){
+        document.getElementById('translatedWordlbl').style.textAlign= "right";
+    }
+    else {
+        document.getElementById('translatedWordlbl').style.textAlign= "left";
+        
+    }
+}
 function textToSpeech(word){
     if (speech) return;
     speech = true;
@@ -22,6 +44,7 @@ function textToSpeech(word){
 }
 function openAddModal() {
     canceledit();
+    cancelTranslate();
     const modal = document.getElementById("add");
     modal.style.minHeight = "270pt";
     modal.style.minWidth = "350pt";
@@ -64,11 +87,11 @@ function appendWord(word, definition, type) {
     let typeElement = element.childNodes[1].childNodes[3];
     let defElement = element.childNodes[3];
     let iconsDiv = element.childNodes[5];
-    iconsDiv.childNodes[3].addEventListener('click', function(e) {
+    iconsDiv.childNodes[5].addEventListener('click', function(e) {
         openEditModal(word, type, definition);
     });
 
-    iconsDiv.childNodes[5].addEventListener('click', function(e) {
+    iconsDiv.childNodes[7].addEventListener('click', function(e) {
         let confirmation = confirm('Are you sure you want to delete this word?');
         if (confirmation) {
             deleteWord(word);
@@ -76,6 +99,9 @@ function appendWord(word, definition, type) {
     });
      iconsDiv.childNodes[1].addEventListener('click', function(e) {
         textToSpeech(word);
+    });
+    iconsDiv.childNodes[3].addEventListener('click', function(e) {
+        openTranslateModal(word);
     });
 
     wordElement.innerHTML = word;
@@ -87,6 +113,7 @@ function appendWord(word, definition, type) {
 }
 
 function deleteWord(word) {
+  
     dictionary.delete(word);
     if (showAll) {
         renderElements(dictionary.getAll());
@@ -120,6 +147,7 @@ function editWord() {
 
 function openEditModal(word, type, definition) {
     canceladd();
+    cancelTranslate();
     const modal = document.getElementById("editmodal");
 
     document.getElementById('wordlbl').innerHTML = word;
@@ -138,7 +166,10 @@ function canceledit() {
 function canceladd() {
     document.getElementById("add").style.display = "none";
 }
-
+function cancelTranslate(){
+    document.getElementById("translateModal").style.display = "none";
+    
+}
 function submitSearch() {
     showAll = false;    
     const query = document.getElementById('searchField').value;
@@ -175,6 +206,7 @@ function submitSearch() {
 function showAllFunc() {
     hideLoader();
     showAll = true;
+    
     document.getElementById('searchField').value = null;
     if(dictionary.length()!=0){
         renderElements(dictionary.getAll());

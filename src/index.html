@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <title>dotDictionary</title>
 </head>
 
-<body  onload="hideLoader()">
+<body onload="hideLoader()">
 
     <!-- .....................................HEADER HTML......................................... -->
     <header class="headerbar">
@@ -19,7 +20,7 @@
             <input class="searchText" id="searchField" type="text" placeholder="Search" size="50" onkeyup="submitSearch()">
         </div>
         <div class="showAll" onclick="showAllFunc()">
-            <i class="fa fa-eye" aria-hidden="true" ></i>
+            <i class="fa fa-eye" aria-hidden="true"></i>
             <label style="cursor: pointer">ShowAll</label>
         </div>
     </header>
@@ -27,26 +28,28 @@
     <!-- .....................................DISPLAY WORD HTML......................................... -->
 
     <div id="division" class="mainPageDivision"></div>
-    
-        <div id="required" class="appendedDiv" style="display: none">
-            <div id="wordNoun" class="wordTypeDiv">
-                <p class="word"></p>
-                <p class="typeParagraph"></p>
-            </div>
-            <div class="defMainDiv" id="defMainDiv">
-                <p id="definition" class="definitionClass"></p>
-            </div>
-            <div class="iconsDiv" id="iconsDivision">
-                <i class="fa fa-volume-up" aria-hidden="true" id="speechIcon" onclick></i>                    
-                <i class="fa fa-edit" aria-hidden="true" onclick></i>
-                <i class="fa fa-trash" aria-hidden="true"  onclick></i>
-            </div>
+
+    <div id="required" class="appendedDiv" style="display: none">
+        <div id="wordNoun" class="wordTypeDiv">
+            <p class="word"></p>
+            <p class="typeParagraph"></p>
         </div>
-    
-        <div onclick="openAddModal()" class="plusbutton">
-          <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
-          <i> +</i>
+        <div class="defMainDiv" id="defMainDiv">
+            <p id="definition" class="definitionClass"></p>
         </div>
+        <div class="iconsDiv" id="iconsDivision">
+            <i class="fa fa-volume-up" aria-hidden="true" id="speechIcon" onclick></i>
+            <i class="fa fa-globe" aria-hidden="true" onclick></i>
+            <i class="fa fa-edit" aria-hidden="true" onclick></i>
+            <i class="fa fa-trash" aria-hidden="true" onclick></i>
+
+        </div>
+    </div>
+
+    <div onclick="openAddModal()" class="plusbutton">
+        <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+        <i> +</i>
+    </div>
     <!-- .....................................ADD WORD MODAL HTML......................................... -->
     <div class="addDiv" id="add" style="display: none">
         <div class="wordInputs">
@@ -73,7 +76,7 @@
     <!-- .....................................EDIT WORD MODAL HTML......................................... -->
     <div class="editDiv" id="editmodal" style="display: none">
         <label id="wordlbl" class="wordlbl" type="text"></label>
-        <div class="labelDiv">        
+        <div class="labelDiv">
             <select class="inputForm" id="editTypeInput">
                 <option value=""  disabled selected="selected">Choose a type</option>
                 <option value="noun">Noun</option>
@@ -83,7 +86,7 @@
                 <option value="adjective">Adjective</option>
             </select>
         </div>
-        
+
         <div class="defDiv">
             <textarea class="deftxt" id="editDifInput" placeholder="Edit The Definition"></textarea>
         </div>
@@ -92,11 +95,28 @@
             <button type="submit" class="cancelBtn" onclick="canceledit()">Cancel</button>
         </div>
     </div>
-
+    <!-- .....................................TRANSLATE WORD MODAL HTML......................................... -->
+    <div class="translateM" id="translateModal" style="display: none">
+        <div class="selectLanguageDiv">
+            <select class="inputForm" id="translateInput"  onchange="translateWord()">
+                    <option value=""  disabled selected="selected">Choose a language</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Spanish">Spanish</option>
+        </select>
+        </div>
+        <div class="wordDiv">
+            <p class="translatedwordlbl" id="translatedWordlbl"></p>
+        </div>
+        <div class="closediv">
+            <button type="submit" id="closebtn" class="closeBtn" onclick="cancelTranslate()">Close</button>
+        </div>
+    </div>
     <!-- .....................................LOADING INDICATOR HTML......................................... -->
     <div id="loading">
     </div>
-  
+
     <script src="./js/index.js"></script>
-    
+
 </body>

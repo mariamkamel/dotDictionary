@@ -105,7 +105,7 @@ class Trie {
 
         for(let i = 0; i < prefix.length; ++i) {
             if (!node.children[prefix[i]]) {
-                return null;
+                return [];
             }
 
             node = node.children[prefix[i]];

@@ -5,12 +5,6 @@ const menuTemplate = [
         label: 'dotDictionary',
         submenu: [
             {
-                label: 'Add new word',
-                click() {
-
-                }
-            },
-            {
                 label:'Quit dotDictionary',
                 role: 'quit'
             }

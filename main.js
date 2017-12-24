@@ -1,13 +1,14 @@
-const {app, BrowserWindow,Menu} = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
 const Trie = require('./src/DataStructures/Trie.js');
 const fs = require('fs');
+const menuTemplate= require('./src/js/menuBar.js');
 
 let dictionary = new Trie();
 let dictionaryDB;
 
 try {
     dictionaryDB = require(`${__dirname}/dotDictionaryData.json`);
-} catch(err) {
+} catch (err) {
     dictionaryDB = {
         data: [],
     };
@@ -24,9 +25,9 @@ loadTrieData(dictionaryDB.data);
 
 
 app.on('ready', () => {
-  const  mainWindow = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
         minWidth: 800,
-        minHeight:600,
+        minHeight: 600,
         show: false
     });
     mainWindow.loadURL(`file://${__dirname}/src/index.html`);
@@ -37,57 +38,6 @@ app.on('ready', () => {
     Menu.setApplicationMenu(mainMenu);
 
 });
-
-const menuTemplate = [
-    {
-
-        label: 'Edit',
-        submenu: [   
-            {
-                label: 'Undo',
-                accelerator: process.platform === 'drawin'? 'Command+Shift+Z':'Ctrl+Z',
-                click(){
-
-                }
-            },
-            {
-                label: 'Redo',
-                accelerator: process.platform === 'drawin'? 'Command+Shift+Y':'Ctrl+Y',
-                click() {
-                    
-                }
-            },
-           /* {
-            label: 'Reload',
-           role: 'reload',
-
-            },*/
-            {
-                label: 'Copy',
-                role: 'copy',
-                accelerator: process.platform === 'drawin'? 'Command+C':'Ctrl+C',
-            },
-              {
-                label: 'Paste',
-                role: 'paste',
-                accelerator: process.platform === 'drawin'? 'Command+V':'Ctrl+V',
-            }
-            
-        ],
-    },
-    {
-        label: 'File',
-        submenu: [
-             {
-                label: 'Quit',
-                accelerator: process.platform === 'drawin'? 'Command+Q': 'Ctrl+Q',
-                click(){
-                    app.quit();
-                }
-            },
-        ]
-    }
-];
 
 app.on('before-quit', () => {
     dictionaryDB.data = dictionary.getAll();
@@ -103,7 +53,9 @@ app.on('before-quit', () => {
 async function loadTrieData(dictionaryDB) {
     for (let word of dictionaryDB) {
         dictionary.insert(word.word, word.type, word.definition);
+
     }
 }
+
 
 exports.dictionary = dictionary;

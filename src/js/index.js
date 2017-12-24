@@ -12,12 +12,15 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
         submitSearch();
     }
 });
-function textToSpeech(word){
+function textToSpeech(word,child){
     if (speech) return;
     speech = true;
-    
+    child.style.color = "red";
     var msg = new SpeechSynthesisUtterance(word);    
- 
+    msg.onend = function(e){
+        speech = false;
+        child.style.color = "#CCC";
+    }
     window.speechSynthesis.speak(msg);
 }
 function openAddModal() {
@@ -75,7 +78,7 @@ function appendWord(word, definition, type) {
         }
     });
      iconsDiv.childNodes[1].addEventListener('click', function(e) {
-        textToSpeech(word);
+        textToSpeech(word,iconsDiv.childNodes[1]);
     });
 
     wordElement.innerHTML = word;

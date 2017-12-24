@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow,Menu} = require('electron');
 const Trie = require('./src/DataStructures/Trie.js');
 const fs = require('fs');
 
@@ -22,8 +22,9 @@ try {
 
 loadTrieData(dictionaryDB.data);
 
+
 app.on('ready', () => {
-    const mainWindow = new BrowserWindow({
+  const  mainWindow = new BrowserWindow({
         minWidth: 800,
         minHeight:600,
         show: false
@@ -32,7 +33,61 @@ app.on('ready', () => {
     mainWindow.on('ready-to-show', () => {
         mainWindow.show();
     });
+    const mainMenu = Menu.buildFromTemplate(menuTemplate);
+    Menu.setApplicationMenu(mainMenu);
+
 });
+
+const menuTemplate = [
+    {
+
+        label: 'Edit',
+        submenu: [   
+            {
+                label: 'Undo',
+                accelerator: process.platform === 'drawin'? 'Command+Shift+Z':'Ctrl+Z',
+                click(){
+
+                }
+            },
+            {
+                label: 'Redo',
+                accelerator: process.platform === 'drawin'? 'Command+Shift+Y':'Ctrl+Y',
+                click() {
+                    
+                }
+            },
+           /* {
+            label: 'Reload',
+           role: 'reload',
+
+            },*/
+            {
+                label: 'Copy',
+                role: 'copy',
+                accelerator: process.platform === 'drawin'? 'Command+C':'Ctrl+C',
+            },
+              {
+                label: 'Paste',
+                role: 'paste',
+                accelerator: process.platform === 'drawin'? 'Command+V':'Ctrl+V',
+            }
+            
+        ],
+    },
+    {
+        label: 'File',
+        submenu: [
+             {
+                label: 'Quit',
+                accelerator: process.platform === 'drawin'? 'Command+Q': 'Ctrl+Q',
+                click(){
+                    app.quit();
+                }
+            },
+        ]
+    }
+];
 
 app.on('before-quit', () => {
     dictionaryDB.data = dictionary.getAll();

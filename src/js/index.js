@@ -1,4 +1,5 @@
 const {remote} = require('electron');
+ const translate = require('google-translate-api');
 const {dictionary, history} = remote.require('./main.js');
 const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 
@@ -27,12 +28,19 @@ function openTranslateModal(word){
 
 function translateWord(){
     const language = document.getElementById('translateInput').value;
-    if(language==="Arabic"){
+    const word = document.getElementById('translatedWordlbl').innerText;
+    translate(word, {to: language}).then(res => {
+        document.getElementById('translatedWordlbl').innerText = res.text;
+    if(language==="ar"){
         document.getElementById('translatedWordlbl').style.textAlign= "right";
     }
     else {
         document.getElementById('translatedWordlbl').style.textAlign= "left";  
     }
+
+}).catch(err => {
+    console.error(err);
+});
 }
 
 function textToSpeech(word,child){

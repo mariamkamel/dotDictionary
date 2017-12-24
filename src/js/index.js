@@ -24,22 +24,26 @@ function openTranslateModal(word){
     modal.style.display = "block";
     
 }
+
 function translateWord(){
     const language = document.getElementById('translateInput').value;
     if(language==="Arabic"){
         document.getElementById('translatedWordlbl').style.textAlign= "right";
     }
     else {
-        document.getElementById('translatedWordlbl').style.textAlign= "left";
-        
+        document.getElementById('translatedWordlbl').style.textAlign= "left";  
     }
 }
-function textToSpeech(word){
+
+function textToSpeech(word,child){
     if (speech) return;
     speech = true;
-    
+    child.style.color = "red";
     var msg = new SpeechSynthesisUtterance(word);    
- 
+    msg.onend = function(e){
+        speech = false;
+        child.style.color = "#CCC";
+    }
     window.speechSynthesis.speak(msg);
 }
 function openAddModal() {
@@ -98,7 +102,7 @@ function appendWord(word, definition, type) {
         }
     });
      iconsDiv.childNodes[1].addEventListener('click', function(e) {
-        textToSpeech(word);
+        textToSpeech(word,iconsDiv.childNodes[1]);
     });
     iconsDiv.childNodes[3].addEventListener('click', function(e) {
         openTranslateModal(word);

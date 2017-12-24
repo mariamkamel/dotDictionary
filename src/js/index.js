@@ -17,6 +17,7 @@ document.getElementById("searchField").addEventListener("keyup", function (event
 function openTranslateModal(word) {
     canceladd();
     canceledit();
+    hideTranslateLoader();    
     const modal = document.getElementById("translateModal");
     document.getElementById('translatedWordlbl').innerHTML = word;
 
@@ -25,14 +26,17 @@ function openTranslateModal(word) {
     modal.style.display = "block";
     const lang = document.getElementById("translateInput");
     lang.addEventListener('click', function (e) {
+        hideTranslateLoader();        
         translateWord(word);
     });
 
 }
 
-function translateWord(word) {
+function translateWord(word) { 
+    showTranslateLoading();
     const language = document.getElementById('translateInput').value;
     translate(word, { to: language }).then(res => {
+        hideTranslateLoader();
         document.getElementById('translatedWordlbl').innerText = res.text;
         if (language === "ar") {
             document.getElementById('translatedWordlbl').style.textAlign = "right";
@@ -278,4 +282,12 @@ function hideLoader() {
 
 function showLoading() {
     document.getElementById("loading").style.display = "block";
+}
+
+function hideTranslateLoader() {
+    document.getElementById("loadingTranslate").style.display = "none";
+}
+
+function showTranslateLoading() {
+    document.getElementById("loadingTranslate").style.display = "block";
 }

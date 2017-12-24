@@ -1,5 +1,5 @@
 const {remote} = require('electron');
-const {dictionary} = remote.require('./main.js');
+const {dictionary, history} = remote.require('./main.js');
 const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
 
 let showAll = false;
@@ -12,22 +12,44 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
         submitSearch();
     }
 });
-function textToSpeech(word){
+
+function openTranslateModal(word){
+    canceladd();
+    canceledit();
+    const modal = document.getElementById("translateModal");
+    document.getElementById('translatedWordlbl').innerHTML = word;
+   
+    modal.style.minHeight = "240pt";
+    modal.style.minWidth = "350pt";
+    modal.style.display = "block";
+    
+}
+
+function translateWord(){
+    const language = document.getElementById('translateInput').value;
+    if(language==="Arabic"){
+        document.getElementById('translatedWordlbl').style.textAlign= "right";
+    }
+    else {
+        document.getElementById('translatedWordlbl').style.textAlign= "left";  
+    }
+}
+
+function textToSpeech(word,child){
     if (speech) return;
     speech = true;
-    var msg = new SpeechSynthesisUtterance(word);
-    let btn = document.getElementById('speech').childNodes;
-    btn[1].style.color = "red";
-
-    msg.onend = function (e) {
+    child.style.color = "red";
+    var msg = new SpeechSynthesisUtterance(word);    
+    msg.onend = function(e){
         speech = false;
-        btn[1].style.color = "#CCC";
-    };
-
+        child.style.color = "#CCC";
+    }
     window.speechSynthesis.speak(msg);
 }
+
 function openAddModal() {
     canceledit();
+    cancelTranslate();
     const modal = document.getElementById("add");
     modal.style.minHeight = "270pt";
     modal.style.minWidth = "350pt";
@@ -45,7 +67,6 @@ function addWord() {
         err = "You Should Enter A Type.";
     } else if (!definition.length) {
         err = "You Should Enter A Definition.";  
-
     } else if (dictionary.contains(word)) {
         err = "This word is already in the dictionary.";
     } else {
@@ -53,10 +74,10 @@ function addWord() {
         renderElements(dictionary.search(word));
         document.getElementById('searchField').value = word;
         document.getElementById("add").style.display = "none";
-
         document.getElementById('nameinput').value = null;
         document.getElementById('typeinput').value = "";
         document.getElementById('difinput').value = null;
+        history.addAction(dictionary.insert, dictionary.delete, [word, type, definition], [word]);
         return;
     }
     alert(err);
@@ -69,19 +90,24 @@ function appendWord(word, definition, type) {
     let wordElement = element.childNodes[1].childNodes[1];
     let typeElement = element.childNodes[1].childNodes[3];
     let defElement = element.childNodes[3];
-    
-    element.childNodes[5].addEventListener('click', function(e) {
+    let iconsDiv = element.childNodes[5];
+    iconsDiv.childNodes[5].addEventListener('click', function(e) {
         openEditModal(word, type, definition);
     });
 
-    element.childNodes[7].addEventListener('click', function(e) {
+    iconsDiv.childNodes[7].addEventListener('click', function(e) {
         let confirmation = confirm('Are you sure you want to delete this word?');
         if (confirmation) {
             deleteWord(word);
         }
     });
-     element.childNodes[9].addEventListener('click', function(e) {
-        textToSpeech(word);
+
+    iconsDiv.childNodes[1].addEventListener('click', function(e) {
+        textToSpeech(word,iconsDiv.childNodes[1]);
+    });
+  
+    iconsDiv.childNodes[3].addEventListener('click', function(e) {
+        openTranslateModal(word);
     });
 
     wordElement.innerHTML = word;
@@ -93,7 +119,9 @@ function appendWord(word, definition, type) {
 }
 
 function deleteWord(word) {
+    let {type, definition} = dictionary.getInfo(word);
     dictionary.delete(word);
+    history.addAction(dictionary.delete, dictionary.insert, [word], [word, type, definition]);    
     if (showAll) {
         renderElements(dictionary.getAll());
     } else {
@@ -104,15 +132,17 @@ function deleteWord(word) {
 
 function editWord() {
     const word =  document.getElementById('wordlbl').textContent;    
-    const type = document.getElementById('editTypeInput').value;
-    const definition = document.getElementById('editDifInput').value;
+    const newType = document.getElementById('editTypeInput').value;
+    const newDefinition = document.getElementById('editDifInput').value;
     let err = "";
-    if (!type.length) {
+    if (!newType.length) {
         err = "You Should Enter A Type.\n";
-    } else if (!definition.length) {
+    } else if (!newDefinition.length) {
         err = "You Should Enter A Definition."; 
     } else {
-        dictionary.edit(word, type, definition);
+        let {type, definition} = dictionary.getInfo(word);
+        dictionary.edit(word, newType, newDefinition);
+        history.addAction(dictionary.edit, dictionary.edit,  [word, newType, newDefinition], [word, type, definition]);            
         if (showAll) {
             renderElements(dictionary.getAll());
         } else {
@@ -126,6 +156,7 @@ function editWord() {
 
 function openEditModal(word, type, definition) {
     canceladd();
+    cancelTranslate();
     const modal = document.getElementById("editmodal");
 
     document.getElementById('wordlbl').innerHTML = word;
@@ -144,7 +175,10 @@ function canceledit() {
 function canceladd() {
     document.getElementById("add").style.display = "none";
 }
-
+function cancelTranslate(){
+    document.getElementById("translateModal").style.display = "none";
+    
+}
 function submitSearch() {
     showAll = false;    
     const query = document.getElementById('searchField').value;
@@ -181,9 +215,19 @@ function submitSearch() {
 function showAllFunc() {
     hideLoader();
     showAll = true;
+    
     document.getElementById('searchField').value = null;
-    renderElements(dictionary.getAll());
-}
+    if(dictionary.length()!=0){
+        renderElements(dictionary.getAll());
+        }
+        else{
+            let main = document.getElementById('division');
+            main.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 100pt">
+                    <p>There are no Words in the Dictionary</p>
+                </div>
+            `;
+        }}
 
 function renderElements(result) {
     document.getElementById('division').innerHTML = null;

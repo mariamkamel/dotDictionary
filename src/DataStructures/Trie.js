@@ -56,7 +56,6 @@ class Trie {
         if (!this.contains(word)) {
             return;
         }
-
         let node = this.root;
         let i;
         for (i = 0; i < word.length; ++i) {
@@ -68,6 +67,7 @@ class Trie {
                 node = node.children[word[i]];
             }
         }
+        
         if (this.search(word.substring(0, i)).length == 1) {
             node = undefined;
         } else {
@@ -150,7 +150,7 @@ class Trie {
     length() {
         return this.size;
     }
-
+ 
 };
 
 module.exports = Trie;

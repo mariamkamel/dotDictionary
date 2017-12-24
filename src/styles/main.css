@@ -99,49 +99,16 @@ body {
     padding: 10pt;
     margin: 10pt;
 }
-
-.editbutton {
-    color:  var(--backgroundColor);
-    background:var(--primaryWhite);
-    font-size: 11pt;    
-    border: none;    
-    margin-right: 41pt;
-    margin-top: 10pt;
-    width:16pt;
-    top: 0pt;
-    outline: none;
+.iconsDiv{
+    /* justify-content: space-between; */
+    align-content:flex-start;
     float: right;
-    right: 0pt; 
+    margin-top: 5pt;
+    top: 0pt;
+    right: 0pt;
     position: absolute;
 }
-.speechButton{
-     background: var(--primaryWhite);    
-    border: none;        
-     width:16pt;
-    margin-right: 67pt;    
-    margin-top: 10pt;
-    top: 0pt;
-    height:16pt;
-    align-items: center;
-    right: 0pt; 
-    outline: none;
-    float: right;
-    position: absolute; 
-}
-.deleteImageButton {
-    background: var(--primaryWhite);    
-    border: none;        
-    margin-right: 15pt;    
-    margin-top: 10pt;
-    top: 0pt;
-    height:16pt;
-    align-items: center;
-    width: 16pt;
-    right: 0pt; 
-    outline: none;
-    float: right;
-    position: absolute;    
-}
+
 
 .appendedDiv i{
     margin-top: 2pt;
@@ -151,11 +118,6 @@ body {
     vertical-align: middle;
 }
 
-.editimg {
-    height:11pt;
-    width: 11pt;
-    vertical-align: middle;
-}
 
 .wordTypeDiv {
     display:block;
@@ -166,6 +128,7 @@ body {
     margin-right: 0pt;
     margin-bottom: 0pt;
     margin-top: 0pt;
+    
 }
 
 .word {
@@ -346,7 +309,56 @@ body {
         opacity: 1;
     }
 }
+/* TRANSLATE WORD MODAL CSS*/
+.translateM{
+    z-index: 3;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: var(--primaryWhite);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+}
 
+.selectLanguageDiv{
+    margin: 10pt;
+}
+.wordDiv{
+        margin: 30pt;
+        margin-top: 20pt;
+        
+}
+
+.translatedwordlbl {
+    font-size: 25pt;
+    word-wrap: break-word;
+    
+}
+.closediv{
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    bottom: 20pt;
+    right: 20pt;
+}
+
+.closeBtn{
+    
+    text-decoration: none;
+    background-color: var(--mainColor);
+    color: var(--primaryWhite);
+    border: none;
+    border-width: 1pt;
+    border-radius: 4pt;
+    border-color: var(--mainColor);
+    outline: none;
+    height: 30pt;    
+    width: 60pt;
+    text-align: center; 
+  
+ 
+}
    /* LOADING INDICATOR CSS */
 #loading{
 

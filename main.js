@@ -50,14 +50,14 @@ const menuTemplate = [
                 label: 'Undo',
                 accelerator: process.platform === 'drawin'? 'Command+Shift+Z':'Ctrl+Z',
                 click(){
-
+                    history.undo();
                 }
             },
             {
                 label: 'Redo',
                 accelerator: process.platform === 'drawin'? 'Command+Shift+Y':'Ctrl+Y',
                 click() {
-                    
+                    history.redo();
                 }
             },
            /* {

@@ -270,6 +270,20 @@ function searchOnline() {
         hideLoader();        
         alert('Sorry an error occured.');
         console.log(err);
+        let main = document.getElementById('division');
+        main.innerHTML = `
+            <div id="SearchResultDiv" style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 100pt">
+                <p>No results found</p>
+                <button 
+                    type="submit"
+                    class="addBtn"
+                    onclick="searchOnline()"
+                    style="width: 240pt; height: 40pt; font-size: medium"
+                >
+                    Get the Definition from the Internet
+                </button>
+            </div>
+        `;
     });
 }
 

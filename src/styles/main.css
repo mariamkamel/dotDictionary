@@ -377,7 +377,7 @@ body {
         /* rotate */
     animation: round 2s linear infinite;
 }
-#loadingTranslate{
+#loadingTranslation{
     
         width: 50px;
         height: 50px;

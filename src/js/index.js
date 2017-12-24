@@ -17,32 +17,18 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
 function openTranslateModal(word){
     canceladd();
     canceledit();
-<<<<<<< HEAD
-    hideTranslateLoader();    
-||||||| merged common ancestors
-=======
-
+    hideTranslationLoader();
         document.getElementById('translatedWordlbl').style.textAlign= "left";  
     
->>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
     const modal = document.getElementById("translateModal");
     document.getElementById('translatedWordlbl').innerHTML = word;
     modal.style.minHeight = "240pt";
     modal.style.minWidth = "350pt";
     modal.style.display = "block";
-<<<<<<< HEAD
-    const lang = document.getElementById("translateInput");
-    lang.addEventListener('click', function (e) {
-        hideTranslateLoader();        
-||||||| merged common ancestors
-    const lang = document.getElementById("translateInput");
-    lang.addEventListener('click', function (e) {
-=======
    const oldLangBox = document.getElementById("translateInput");
     const newLangBox = oldLangBox.cloneNode(true);
     oldLangBox.parentNode.replaceChild(newLangBox, oldLangBox);
-    newLangBox.addEventListener('change', function name(e) {
->>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
+    newLangBox.addEventListener('change', function name(e) {       
         translateWord(word);
     });
     
@@ -51,24 +37,12 @@ ipcRenderer.on('addWord',()=>{
 openAddModal();
 });
 
-<<<<<<< HEAD
-function translateWord(word) { 
-    showTranslateLoading();
-||||||| merged common ancestors
-function translateWord(word) {
-=======
 function translateWord(word){
->>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
+    showTranslationLoading();
     const language = document.getElementById('translateInput').value;
-<<<<<<< HEAD
-    translate(word, { to: language }).then(res => {
-        hideTranslateLoader();
-||||||| merged common ancestors
-    translate(word, { to: language }).then(res => {
-=======
     translate(word, {to: language}).then(res => {
->>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
         document.getElementById('translatedWordlbl').innerText = res.text;
+        hideTranslationLoader();
     if(language==="ar"){
         document.getElementById('translatedWordlbl').style.textAlign= "right";
     }
@@ -316,10 +290,10 @@ function showLoading() {
     document.getElementById("loading").style.display = "block";
 }
 
-function hideTranslateLoader() {
-    document.getElementById("loadingTranslate").style.display = "none";
+function hideTranslationLoader(){
+    document.getElementById("loadingTranslation").style.display = "none";
 }
 
-function showTranslateLoading() {
-    document.getElementById("loadingTranslate").style.display = "block";
+function showTranslationLoading() {
+    document.getElementById("loadingTranslation").style.display = "block";
 }

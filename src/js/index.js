@@ -17,14 +17,18 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
 function openTranslateModal(word){
     canceladd();
     canceledit();
+
+        document.getElementById('translatedWordlbl').style.textAlign= "left";  
+    
     const modal = document.getElementById("translateModal");
     document.getElementById('translatedWordlbl').innerHTML = word;
-   
     modal.style.minHeight = "240pt";
     modal.style.minWidth = "350pt";
     modal.style.display = "block";
-    const lang = document.getElementById("translateInput");
-    lang.addEventListener('click', function(e) {
+   const oldLangBox = document.getElementById("translateInput");
+    const newLangBox = oldLangBox.cloneNode(true);
+    oldLangBox.parentNode.replaceChild(newLangBox, oldLangBox);
+    newLangBox.addEventListener('change', function name(e) {
         translateWord(word);
     });
     
@@ -191,6 +195,7 @@ function canceladd() {
 }
 function cancelTranslate(){
     document.getElementById("translateModal").style.display = "none";
+
     
 }
 function submitSearch() {

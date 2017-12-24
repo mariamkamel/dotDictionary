@@ -1,4 +1,4 @@
-
+let main = require('../../main.js')
 const menuTemplate = [
     
     process.platform == 'darwin' ? {
@@ -12,7 +12,7 @@ const menuTemplate = [
             },
             {
                 label:'Quit dotDictionary',
-                role: 'close'
+                role: 'quit'
             }
         ]
     } : 
@@ -29,7 +29,7 @@ const menuTemplate = [
             process.platform=='win32'?
             {
                 label: 'Quit dotDictionary',
-            role: 'close'
+            role: 'quit'
                 
             }:
             {}
@@ -43,14 +43,14 @@ const menuTemplate = [
                 label: 'Undo',
                 accelerator: process.platform === 'darwin' ? 'Command+Z' : 'Ctrl+Z',
                 click() {
-
+                    main.history.undo();
                 }
             },
             {
                 label: 'Redo',
                 accelerator: process.platform === 'darwin' ? 'Command+Shift+Z' : 'Ctrl+Y',
                 click() {
-
+                    main.history.redo();
                 }
             },
             {

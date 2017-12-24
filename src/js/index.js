@@ -17,7 +17,7 @@ document.getElementById("searchField").addEventListener("keyup", function(event)
 function openTranslateModal(word){
     canceladd();
     canceledit();
-
+    hideTranslationLoader();
         document.getElementById('translatedWordlbl').style.textAlign= "left";  
     
     const modal = document.getElementById("translateModal");
@@ -28,7 +28,7 @@ function openTranslateModal(word){
    const oldLangBox = document.getElementById("translateInput");
     const newLangBox = oldLangBox.cloneNode(true);
     oldLangBox.parentNode.replaceChild(newLangBox, oldLangBox);
-    newLangBox.addEventListener('change', function name(e) {
+    newLangBox.addEventListener('change', function name(e) {       
         translateWord(word);
     });
     
@@ -38,9 +38,11 @@ openAddModal();
 });
 
 function translateWord(word){
+    showTranslationLoading();
     const language = document.getElementById('translateInput').value;
     translate(word, {to: language}).then(res => {
         document.getElementById('translatedWordlbl').innerText = res.text;
+        hideTranslationLoader();
     if(language==="ar"){
         document.getElementById('translatedWordlbl').style.textAlign= "right";
     }
@@ -268,6 +270,20 @@ function searchOnline() {
         hideLoader();        
         alert('Sorry an error occured.');
         console.log(err);
+        let main = document.getElementById('division');
+        main.innerHTML = `
+            <div id="SearchResultDiv" style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 100pt">
+                <p>No results found</p>
+                <button 
+                    type="submit"
+                    class="addBtn"
+                    onclick="searchOnline()"
+                    style="width: 240pt; height: 40pt; font-size: medium"
+                >
+                    Get the Definition from the Internet
+                </button>
+            </div>
+        `;
     });
 }
 
@@ -286,4 +302,12 @@ function hideLoader(){
 
 function showLoading() {
     document.getElementById("loading").style.display = "block";
+}
+
+function hideTranslationLoader(){
+    document.getElementById("loadingTranslation").style.display = "none";
+}
+
+function showTranslationLoading() {
+    document.getElementById("loadingTranslation").style.display = "block";
 }

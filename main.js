@@ -1,10 +1,14 @@
 const {app, BrowserWindow, Menu} = require('electron');
 const Trie = require('./src/DataStructures/Trie.js');
 const fs = require('fs');
+const History = require('./src/DataStructures/History.js');
 const menuTemplate= require('./src/js/menuBar.js');
+
 
 let dictionary = new Trie();
 let dictionaryDB;
+let history = new History();
+let mainWindow;
 
 try {
     dictionaryDB = require(`${__dirname}/dotDictionaryData.json`);
@@ -57,5 +61,5 @@ async function loadTrieData(dictionaryDB) {
     }
 }
 
-
 exports.dictionary = dictionary;
+exports.history = history;

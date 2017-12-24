@@ -128,6 +128,7 @@ body {
     margin-right: 0pt;
     margin-bottom: 0pt;
     margin-top: 0pt;
+    
 }
 
 .word {
@@ -308,7 +309,56 @@ body {
         opacity: 1;
     }
 }
+/* TRANSLATE WORD MODAL CSS*/
+.translateM{
+    z-index: 3;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: var(--primaryWhite);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+}
 
+.selectLanguageDiv{
+    margin: 10pt;
+}
+.wordDiv{
+        margin: 30pt;
+        margin-top: 20pt;
+        
+}
+
+.translatedwordlbl {
+    font-size: 25pt;
+    word-wrap: break-word;
+    
+}
+.closediv{
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    bottom: 20pt;
+    right: 20pt;
+}
+
+.closeBtn{
+    
+    text-decoration: none;
+    background-color: var(--mainColor);
+    color: var(--primaryWhite);
+    border: none;
+    border-width: 1pt;
+    border-radius: 4pt;
+    border-color: var(--mainColor);
+    outline: none;
+    height: 30pt;    
+    width: 60pt;
+    text-align: center; 
+  
+ 
+}
    /* LOADING INDICATOR CSS */
 #loading{
 

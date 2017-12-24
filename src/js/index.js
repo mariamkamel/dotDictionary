@@ -1,4 +1,4 @@
-const {remote} = require('electron');
+const {remote,ipcRenderer } = require('electron');
 const translate = require('google-translate-api');
 const {dictionary, history} = remote.require('./main.js');
 const DictionaryAPI = remote.require('./src/js/DictionaryAPI.js');
@@ -7,59 +7,91 @@ let showAll = false;
 let speech = false;
 displayDefaultContent();
 
-document.getElementById("searchField").addEventListener("keyup", function (event) {
+document.getElementById("searchField").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
         submitSearch();
     }
 });
 
-function openTranslateModal(word) {
+function openTranslateModal(word){
     canceladd();
     canceledit();
+<<<<<<< HEAD
     hideTranslateLoader();    
+||||||| merged common ancestors
+=======
+
+        document.getElementById('translatedWordlbl').style.textAlign= "left";  
+    
+>>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
     const modal = document.getElementById("translateModal");
     document.getElementById('translatedWordlbl').innerHTML = word;
-
     modal.style.minHeight = "240pt";
     modal.style.minWidth = "350pt";
     modal.style.display = "block";
+<<<<<<< HEAD
     const lang = document.getElementById("translateInput");
     lang.addEventListener('click', function (e) {
         hideTranslateLoader();        
+||||||| merged common ancestors
+    const lang = document.getElementById("translateInput");
+    lang.addEventListener('click', function (e) {
+=======
+   const oldLangBox = document.getElementById("translateInput");
+    const newLangBox = oldLangBox.cloneNode(true);
+    oldLangBox.parentNode.replaceChild(newLangBox, oldLangBox);
+    newLangBox.addEventListener('change', function name(e) {
+>>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
         translateWord(word);
     });
-
+    
 }
+ipcRenderer.on('addWord',()=>{
+openAddModal();
+});
 
+<<<<<<< HEAD
 function translateWord(word) { 
     showTranslateLoading();
+||||||| merged common ancestors
+function translateWord(word) {
+=======
+function translateWord(word){
+>>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
     const language = document.getElementById('translateInput').value;
+<<<<<<< HEAD
     translate(word, { to: language }).then(res => {
         hideTranslateLoader();
+||||||| merged common ancestors
+    translate(word, { to: language }).then(res => {
+=======
+    translate(word, {to: language}).then(res => {
+>>>>>>> 091e50ac477bf1b27d87fb965b68685865f2f08b
         document.getElementById('translatedWordlbl').innerText = res.text;
-        if (language === "ar") {
-            document.getElementById('translatedWordlbl').style.textAlign = "right";
-        }
-        else {
-            document.getElementById('translatedWordlbl').style.textAlign = "left";
-        }
-    }).catch(err => {
-        console.error(err);
-    });
+    if(language==="ar"){
+        document.getElementById('translatedWordlbl').style.textAlign= "right";
+    }
+    else {
+        document.getElementById('translatedWordlbl').style.textAlign= "left";  
+    }
+}).catch(err => {
+    console.error(err);
+});
 }
 
-function textToSpeech(word, child) {
+function textToSpeech(word,child){
     if (speech) return;
     speech = true;
     child.style.color = "red";
-    var msg = new SpeechSynthesisUtterance(word);
-    msg.onend = function (e) {
+    var msg = new SpeechSynthesisUtterance(word);    
+    msg.onend = function(e){
         speech = false;
         child.style.color = "#CCC";
     }
     window.speechSynthesis.speak(msg);
 }
+ip
 
 function openAddModal() {
     canceledit();
@@ -71,7 +103,7 @@ function openAddModal() {
 }
 
 function addWord() {
-    const word = document.getElementById('nameinput').value;
+    const word =  document.getElementById('nameinput').value;
     const type = document.getElementById('typeinput').value;
     const definition = document.getElementById('difinput').value;
     let err = "";
@@ -80,7 +112,7 @@ function addWord() {
     } else if (!type.length) {
         err = "You Should Enter A Type.";
     } else if (!definition.length) {
-        err = "You Should Enter A Definition.";
+        err = "You Should Enter A Definition.";  
     } else if (dictionary.contains(word)) {
         err = "This word is already in the dictionary.";
     } else {
@@ -105,22 +137,22 @@ function appendWord(word, definition, type) {
     let typeElement = element.childNodes[1].childNodes[3];
     let defElement = element.childNodes[3];
     let iconsDiv = element.childNodes[5];
-    iconsDiv.childNodes[5].addEventListener('click', function (e) {
+    iconsDiv.childNodes[5].addEventListener('click', function(e) {
         openEditModal(word, type, definition);
     });
 
-    iconsDiv.childNodes[7].addEventListener('click', function (e) {
+    iconsDiv.childNodes[7].addEventListener('click', function(e) {
         let confirmation = confirm('Are you sure you want to delete this word?');
         if (confirmation) {
             deleteWord(word);
         }
     });
 
-    iconsDiv.childNodes[1].addEventListener('click', function (e) {
-        textToSpeech(word, iconsDiv.childNodes[1]);
+    iconsDiv.childNodes[1].addEventListener('click', function(e) {
+        textToSpeech(word,iconsDiv.childNodes[1]);
     });
-
-    iconsDiv.childNodes[3].addEventListener('click', function (e) {
+  
+    iconsDiv.childNodes[3].addEventListener('click', function(e) {
         openTranslateModal(word);
     });
 
@@ -135,7 +167,7 @@ function appendWord(word, definition, type) {
 function deleteWord(word) {
     let {type, definition} = dictionary.getInfo(word);
     dictionary.delete(word);
-    history.addAction(dictionary.delete, dictionary.insert, [word], [word, type, definition]);
+    history.addAction(dictionary.delete, dictionary.insert, [word], [word, type, definition]);    
     if (showAll) {
         renderElements(dictionary.getAll());
     } else {
@@ -145,18 +177,18 @@ function deleteWord(word) {
 }
 
 function editWord() {
-    const word = document.getElementById('wordlbl').textContent;
+    const word =  document.getElementById('wordlbl').textContent;    
     const newType = document.getElementById('editTypeInput').value;
     const newDefinition = document.getElementById('editDifInput').value;
     let err = "";
     if (!newType.length) {
         err = "You Should Enter A Type.\n";
     } else if (!newDefinition.length) {
-        err = "You Should Enter A Definition.";
+        err = "You Should Enter A Definition."; 
     } else {
         let {type, definition} = dictionary.getInfo(word);
         dictionary.edit(word, newType, newDefinition);
-        history.addAction(dictionary.edit, dictionary.edit, [word, newType, newDefinition], [word, type, definition]);
+        history.addAction(dictionary.edit, dictionary.edit,  [word, newType, newDefinition], [word, type, definition]);            
         if (showAll) {
             renderElements(dictionary.getAll());
         } else {
@@ -176,34 +208,35 @@ function openEditModal(word, type, definition) {
     document.getElementById('wordlbl').innerHTML = word;
     document.getElementById('editTypeInput').value = type;
     document.getElementById('editDifInput').value = definition;
-
+    
     modal.style.minHeight = "260pt";
     modal.style.minWidth = "350pt";
     modal.style.display = "block";
 }
 
 function canceledit() {
-    document.getElementById("editmodal").style.display = "none";
+    document.getElementById("editmodal").style.display = "none";    
 }
 
 function canceladd() {
     document.getElementById("add").style.display = "none";
 }
-function cancelTranslate() {
+function cancelTranslate(){
     document.getElementById("translateModal").style.display = "none";
 
+    
 }
 function submitSearch() {
-    showAll = false;
+    showAll = false;    
     const query = document.getElementById('searchField').value;
 
-    hideLoader();
+    hideLoader();    
 
     if (!query) {
         displayDefaultContent();
         return;
     };
-
+    
     let searchResult = dictionary.search(query);
     if (searchResult.length) {
         renderElements(searchResult);
@@ -223,26 +256,25 @@ function submitSearch() {
             </div>
         `;
     }
-
+    
 }
 
 function showAllFunc() {
     hideLoader();
     showAll = true;
-
+    
     document.getElementById('searchField').value = null;
-    if (dictionary.length() != 0) {
+    if(dictionary.length()!=0){
         renderElements(dictionary.getAll());
-    }
-    else {
-        let main = document.getElementById('division');
-        main.innerHTML = `
+        }
+        else{
+            let main = document.getElementById('division');
+            main.innerHTML = `
                 <div style="display: flex; align-items: center; justify-content: center; margin-top: 100pt">
                     <p>There are no Words in the Dictionary</p>
                 </div>
             `;
-    }
-}
+        }}
 
 function renderElements(result) {
     document.getElementById('division').innerHTML = null;
@@ -261,7 +293,7 @@ function searchOnline() {
         renderElements(dictionary.search(query));
         console.log(definition);
     }).catch(err => {
-        hideLoader();
+        hideLoader();        
         alert('Sorry an error occured.');
         console.log(err);
     });
@@ -276,7 +308,7 @@ function displayDefaultContent() {
     `;
 }
 
-function hideLoader() {
+function hideLoader(){
     document.getElementById("loading").style.display = "none";
 }
 

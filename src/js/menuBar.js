@@ -1,15 +1,11 @@
 let main = require('../../main.js')
+const { remote, BrowserWindow } = require('electron');
+
 const menuTemplate = [
     
     process.platform == 'darwin' ? {
         label: 'dotDictionary',
         submenu: [
-            {
-                label: 'Add new word',
-                click() {
-
-                }
-            },
             {
                 label:'Quit dotDictionary',
                 role: 'quit'
@@ -23,8 +19,10 @@ const menuTemplate = [
             {
                 label: 'Add new word',
                 click(){
+                    BrowserWindow.getFocusedWindow().webContents.send('addWord');
 
-                }
+                },
+                accelerator: 'CmdOrCtrl+N'
             },
             process.platform=='win32'?
             {
@@ -41,7 +39,7 @@ const menuTemplate = [
         submenu: [
             {
                 label: 'Undo',
-                accelerator: process.platform === 'darwin' ? 'Command+Z' : 'Ctrl+Z',
+                accelerator: 'CmdOrCtrl+Z',
                 click() {
                     main.history.undo();
                 }
@@ -60,7 +58,7 @@ const menuTemplate = [
             },
             {
                 label: 'Toggle Developer Tools',
-                accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+                accelerator: 'CmdOrCtrl+Shift+I',
                 click(item, focusedWindow) {
                     if (focusedWindow) focusedWindow.webContents.toggleDevTools()
                 }
@@ -68,12 +66,12 @@ const menuTemplate = [
             {
                 label: 'Copy',
                 role: 'copy',
-                accelerator: process.platform === 'darwin' ? 'Command+C' : 'Ctrl+C',
+                accelerator:  'CmdOrCtrl+C',
             },
             {
                 label: 'Paste',
                 role: 'paste',
-                accelerator: process.platform === 'darwin' ? 'Command+V' : 'Ctrl+V',
+                accelerator: 'CmdOrCtrl+V',
             },
 
         ]

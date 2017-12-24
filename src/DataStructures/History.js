@@ -17,7 +17,6 @@ class History {
         this.historyArr
             .splice(this.head + 1, 0, new HistoryNode(actionCallback, undoCallback, actionParams, undoParams));
         this.historyArr = this.historyArr.slice(0, this.head + 2);
-        console.log(this.historyArr);
         this.head++;
     }
 

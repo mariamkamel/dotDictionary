@@ -38,7 +38,6 @@ app.on('ready', () => {
     mainWindow.on('ready-to-show', () => {
         mainWindow.show();
     });
-    const mainMenu = Menu.buildFromTemplate(menuTemplate);
     if (process.platform === 'darwin') {
         menuTemplate.unshift({
             label: app.getName(),
@@ -50,6 +49,7 @@ app.on('ready', () => {
             ]
         })
     }
+    const mainMenu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(mainMenu);
 });
 

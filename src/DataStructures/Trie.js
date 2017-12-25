@@ -57,8 +57,7 @@ class Trie {
             return;
         }
         let node = this.root;
-        let i;
-        for (i = 0; i < word.length; ++i) {
+        for (let i = 0; i < word.length; ++i) {
             if (this.search(word.substring(0, i)).length == 1) {
                 node.children = [];
                 this.size--;
@@ -67,14 +66,10 @@ class Trie {
                 node = node.children[word[i]];
             }
         }
-        
-        if (this.search(word.substring(0, i)).length == 1) {
-            node = undefined;
-        } else {
-            node.type = undefined;
-            node.definition = undefined;
-            node.end = undefined;
-        }
+
+        node.type = undefined;
+        node.definition = undefined;
+        node.end = undefined;
         this.size--;
     }
 
